@@ -4,8 +4,25 @@ import { RiNeteaseCloudMusicLine } from "react-icons/ri";
 import { HiPlusSm } from "react-icons/hi";
 import Link from "next/link";
 import PlayListContainer from "../Music/PlayListContainer";
+import axios from "axios";
 
-export default function SideMenu() {
+const token =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDU3NmEzLTExMjgtNDEzYi1iNjU4LTg0MWM1OGE3ZjRmMSIsImlhdCI6MTY5NDQ0NTc0M30.fdTu-9yKinA24KbvKOgLgBg8CmOVpWff5STrRZQ19c0";
+type PlayList = {
+  name: string;
+};
+
+export default async function SideMenu() {
+  const playlist: PlayList[] = await axios
+    .get(`https://musician-project-be.onrender.com/get/playlist`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((res) => {
+      return res.data;
+    });
+  console.log(playlist);
   return (
     <aside className="flex flex-col w-96 gap-3">
       <div className=" bg-black-800 p-3 rounded-lg">
@@ -29,16 +46,9 @@ export default function SideMenu() {
           </div>
         </div>
         <div className="flex flex-col flex-grow gap-3 overflow-y-auto h-0">
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
-            <PlayListContainer />
+          {playlist.map((res, index) => {
+            return <PlayListContainer key={index} name={res.name} />;
+          })}
         </div>
       </div>
     </aside>

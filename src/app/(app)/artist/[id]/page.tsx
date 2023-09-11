@@ -30,11 +30,9 @@ interface AlbumProps {
   };
 }
 export default async function Artist({ params }: AlbumProps) {
-  console.log(params.id);
   const artist: Artist = await axios.get(`https://musician-project-be.onrender.com/get/artist/${params.id}`).then((res) => {
     return res.data;
   });
-  console.log(artist);
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-3">
