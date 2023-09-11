@@ -10,7 +10,7 @@ type MusicContextProps = {
 type Music = {
   name: string;
   authorName: string;
-  imageUrl: string;
+  imageUrl: string | undefined;
   musicUrl: string;
 };
 

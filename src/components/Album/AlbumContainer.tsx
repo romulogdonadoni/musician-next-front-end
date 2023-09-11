@@ -14,7 +14,7 @@ export default function AlbumContainer({ id, name, imageUrl, authorName }: Album
   return (
     <Link
       href={`/album/${id}`}
-      className="group/edit flex  flex-col bg-black-700  border border-silver-600  rounded-lg p-2 gap-2 cursor-pointer hover:bg-neutral-600 ease-in-out duration-300  "
+      className="group/edit flex  flex-col bg-black-700  border border-silver-600  rounded-lg p-2 gap-2 cursor-pointer hover:bg-black-600 ease-in-out duration-300  "
     >
       <Image src={imageUrl} height={136} width={136} alt="" className="rounded " />
       <div className="flex flex-col justify-center">

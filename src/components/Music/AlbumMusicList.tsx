@@ -27,7 +27,7 @@ export default function AlbumMusicList({ name, index, musicUrl, imageUrl, author
           musicUrl: musicUrl,
         })
       }
-      className="flex p-3 rounded-lg bg-black-700 border border-silver-600 cursor-pointer hover:bg-neutral-600 ease-in-out duration-300"
+      className="flex p-3 rounded-lg bg-black-700 border border-silver-600 cursor-pointer hover:bg-black-600 ease-in-out duration-300"
     >
       <p>{index + 1}-</p>
       <p>{name}</p>

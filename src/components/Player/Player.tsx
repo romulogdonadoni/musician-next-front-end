@@ -21,9 +21,13 @@ export default function Player() {
     <div className="flex flex-grow-1 items-center justify-center h-24 min-h-24 gap-10">
       <div className="flex flex-1 bg-black-800 border border-silver-600 rounded-lg p-3 items-center">
         <div className="flex flex-1 items-center gap-3 ">
-          <Image className="rounded" src={musicContext?.music.imageUrl!} width={64} height={64} alt="" />
+          {musicContext?.music.imageUrl == "" ? (
+            <div className="w-16 h-16 bg-black-700 rounded-lg"></div>
+          ) : (
+            <Image className="rounded" src={musicContext?.music.imageUrl!} width={64} height={64} alt="" />
+          )}
           <div>
-            <p className="text-xs animate-pulse">Tocando agora...</p>
+            <p className="text-xs animate-pulse">Playing now...</p>
             <p className="text-base">{musicContext?.music.name}</p>
             <p className="text-xs">{musicContext?.music.authorName}</p>
           </div>

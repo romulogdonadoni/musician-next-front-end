@@ -27,6 +27,7 @@ interface AlbumProps {
   };
 }
 export default async function Album({ params }: AlbumProps) {
+
   const album: Album = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
     return res.data;
   });

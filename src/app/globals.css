@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0, 0.25);
+
+}
+::-webkit-scrollbar-thumb {
+    background: #FF4C29;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ff684a;
+}

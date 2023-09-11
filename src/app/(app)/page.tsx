@@ -31,8 +31,48 @@ export default async function App() {
           Suas <span className="text-orange">músicas</span> mais ouvidas
         </h1>
         <div className="grid grid-cols-4 gap-3">
-          {musics.slice(0, 8).map((res) => (
+          {musics.map((res) => (
             <MusicContaniner key={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} musicUrl={res.musicUrl} />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <h1 className="text-xl font-bold">
+          Seus <span className="text-orange">álbuns</span> mais ouvidos
+        </h1>
+        <div className="flex gap-3">
+          {albums.slice(0, 8).map((res) => (
+            <AlbumContainer key={res.id} id={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <h1 className="text-xl font-bold">
+          Seus <span className="text-orange">álbuns</span> mais ouvidos
+        </h1>
+        <div className="flex gap-3">
+          {albums.slice(0, 8).map((res) => (
+            <AlbumContainer key={res.id} id={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <h1 className="text-xl font-bold">
+          Seus <span className="text-orange">álbuns</span> mais ouvidos
+        </h1>
+        <div className="flex gap-3">
+          {albums.slice(0, 8).map((res) => (
+            <AlbumContainer key={res.id} id={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <h1 className="text-xl font-bold">
+          Seus <span className="text-orange">álbuns</span> mais ouvidos
+        </h1>
+        <div className="flex gap-3">
+          {albums.slice(0, 8).map((res) => (
+            <AlbumContainer key={res.id} id={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} />
           ))}
         </div>
       </div>
