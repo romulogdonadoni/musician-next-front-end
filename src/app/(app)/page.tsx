@@ -29,7 +29,7 @@ export default async function App() {
         <h1 className="text-xl font-bold">
           Suas <span className="text-orange">músicas</span> mais ouvidas
         </h1>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3">
           {musics.map((res) => (
             <MusicContaniner key={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} musicUrl={res.musicUrl} />
           ))}

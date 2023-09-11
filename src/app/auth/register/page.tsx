@@ -1,7 +1,20 @@
+"use client";
 import Illustration from "@/../public/illu.svg";
+import { RegisterUser } from "@/components/Auth/RegisterUser";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+export type RegisterFormData = {
+  email: string;
+  username: string;
+  password: string;
+  role: string;
+};
 
 export default function Auth() {
+  const [formData, setFormData] = useState<RegisterFormData>({ email: "", username: "", password: "", role: "ARTIST" });
+
   return (
     <div className="flex  overflow-clip">
       <div className="flex flex-col bg-black-800 p-10 border border-silver-600 rounded-l-2xl">
@@ -20,11 +33,19 @@ export default function Auth() {
               type="email"
               name=""
               id=""
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
           </div>
           <div className="flex flex-col gap-1">
             <label>Nome</label>
-            <input className="bg-transparent outline-none border-2 border-orange rounded-2xl p-3" placeholder="username" type="text" name="" id="" />
+            <input
+              className="bg-transparent outline-none border-2 border-orange rounded-2xl p-3"
+              placeholder="username"
+              type="text"
+              name=""
+              id=""
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+            />
           </div>
           <div className="flex flex-col gap-1">
             <label>Senha</label>
@@ -34,6 +55,7 @@ export default function Auth() {
               type="password"
               name=""
               id=""
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -46,6 +68,8 @@ export default function Auth() {
               id=""
             />
           </div>
+          <RegisterUser formData={formData} />
+          <Link href={"/auth/login"}>Login</Link>
         </form>
       </div>
     </div>
