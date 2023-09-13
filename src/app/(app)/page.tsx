@@ -7,6 +7,7 @@ type Music = {
   authorName: string;
   imageUrl: string;
   musicUrl: string;
+  _count: { musicViews: number };
 };
 type Album = {
   id: string;
@@ -23,6 +24,8 @@ export default async function App() {
   const albums: Album[] = await axios.get("https://musician-project-be.onrender.com/get/album").then((res) => {
     return res.data;
   });
+  
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3">
@@ -31,7 +34,15 @@ export default async function App() {
         </h1>
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3">
           {musics.map((res) => (
-            <MusicContaniner key={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} musicUrl={res.musicUrl} />
+            <MusicContaniner
+              key={res.id}
+              id={res.id}
+              name={res.name}
+              imageUrl={res.imageUrl}
+              authorName={res.authorName}
+              musicUrl={res.musicUrl}
+              views={res._count.musicViews}
+            />
           ))}
         </div>
       </div>

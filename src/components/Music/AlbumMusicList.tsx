@@ -9,8 +9,9 @@ interface MusicTrackAlbum {
   musicUrl: string;
   imageUrl: string;
   authorName: string;
+  views: number;
 }
-export default function AlbumMusicList({ name, index, musicUrl, imageUrl, authorName }: MusicTrackAlbum) {
+export default function AlbumMusicList({ name, index, musicUrl, imageUrl, authorName, views }: MusicTrackAlbum) {
   const musicContext = useContext(MusicContext);
 
   if (!musicContext) {
@@ -18,7 +19,7 @@ export default function AlbumMusicList({ name, index, musicUrl, imageUrl, author
   }
   const { setMusic } = musicContext;
   return (
-    <div
+    <tr
       onClick={() =>
         setMusic({
           name: name,
@@ -27,10 +28,10 @@ export default function AlbumMusicList({ name, index, musicUrl, imageUrl, author
           musicUrl: musicUrl,
         })
       }
-      className="flex p-3 rounded-lg bg-black-700 border border-silver-600 cursor-pointer hover:bg-black-600 ease-in-out duration-300"
+      className="grid grid-cols-2 p-3 rounded-lg bg-black-700 border border-silver-600 cursor-pointer hover:bg-black-600 ease-in-out duration-300"
     >
-      <p>{index + 1}-</p>
-      <p>{name}</p>
-    </div>
+      <td>{index + 1}-{name}</td>
+      <td>Tocada {views} vezes</td>
+    </tr>
   );
 }

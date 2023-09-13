@@ -34,7 +34,7 @@ export default function Player() {
         </div>
         <AiOutlineHeart size={26} color={"#FF4C29"} />
       </div>
-      <audio className="flex flex-1" ref={audioRef} src={musicContext?.music.musicUrl} controls />
+      <audio onTimeUpdate={(e)=> console.log(e.currentTarget.currentTime)} className="flex flex-1" ref={audioRef} src={musicContext?.music.musicUrl} controls />
       <div className="flex flex-1"></div>
     </div>
   );

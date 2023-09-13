@@ -7,7 +7,7 @@ import PlayListContainer from "../Music/PlayListContainer";
 import axios from "axios";
 
 const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDU3NmEzLTExMjgtNDEzYi1iNjU4LTg0MWM1OGE3ZjRmMSIsImlhdCI6MTY5NDQ0NTc0M30.fdTu-9yKinA24KbvKOgLgBg8CmOVpWff5STrRZQ19c0";
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MGYyOTU3LTA3MjMtNDYwMi1hOGFjLWMxMWNhYjVhNDc2MyIsImlhdCI6MTY5NDYyMjQ5N30.8XcT4G0n-wyt4t1RI7wKlAqt6cXRQKMrQ0IvQ8TRqjk";
 type PlayList = {
   name: string;
 };

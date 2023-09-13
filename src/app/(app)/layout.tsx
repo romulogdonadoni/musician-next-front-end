@@ -17,7 +17,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <SideMenu />
           <div className="flex flex-1 flex-col rounded-lg bg-black-800 p-3 gap-3 ">
             <NavBar />
-            <div className="flex flex-col flex-grow gap-3 overflow-y-auto h-0">{children}</div>
+            <div className="flex flex-col flex-grow gap-3 overflow-x-hidden overflow-y-auto h-0">{children}</div>
           </div>
         </div>
         <Player />
@@ -25,3 +25,4 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </MusicProvider>
   );
 }
+                                                                                                                                                                                          

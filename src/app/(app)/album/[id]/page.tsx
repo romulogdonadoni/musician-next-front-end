@@ -20,6 +20,7 @@ type Music = {
   authorName: string;
   imageUrl: string;
   musicUrl: string;
+  _count: { musicViews: number };
 };
 interface AlbumProps {
   params: {
@@ -27,7 +28,6 @@ interface AlbumProps {
   };
 }
 export default async function Album({ params }: AlbumProps) {
-
   const album: Album = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
     return res.data;
   });
@@ -43,13 +43,22 @@ export default async function Album({ params }: AlbumProps) {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+
+      <table className="flex flex-col gap-3">
         {album[0].music.map((res, index) => {
           return (
-            <AlbumMusicList key={res.id} index={index} name={res.name} musicUrl={res.musicUrl} imageUrl={res.imageUrl} authorName={res.authorName} />
+            <AlbumMusicList
+              key={res.id}
+              index={index}
+              name={res.name}
+              musicUrl={res.musicUrl}
+              imageUrl={res.imageUrl}
+              authorName={res.authorName}
+              views={res._count.musicViews}
+            />
           );
         })}
-      </div>
+      </table>
     </div>
   );
 }
