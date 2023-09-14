@@ -2,6 +2,7 @@ import AlbumMusicList from "@/components/Music/AlbumMusicList";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import {BsPlay} from "react-icons/bs"
 
 type Album = [
   {
@@ -45,6 +46,9 @@ export default async function Album({ params }: AlbumProps) {
       </div>
 
       <table className="flex flex-col gap-3">
+        <th className="flex">
+          <td className="flex items-center justify-center p-3 rounded-full bg-black-700 border border-silver-600 cursor-pointer hover:bg-black-600 ease-in-out duration-300"><BsPlay size={26} color={"#FF4C29"}/></td>
+        </th>
         {album[0].music.map((res, index) => {
           return (
             <AlbumMusicList

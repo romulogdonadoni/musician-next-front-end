@@ -1,14 +1,16 @@
 import { LoginFormData } from "@/app/auth/login/page";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
 interface LoginFormDataProps {
   formData: LoginFormData;
 }
 export function LoginUser({ formData }: LoginFormDataProps) {
   const router = useRouter();
   const handleCreateUser = () => {
-    axios.post("https://musician-project-be.onrender.com/auth/login", formData).then(() => router.push("/"));
+    axios.post("https://musician-project-be.onrender.com/auth/login", formData).then((res) => {
+      localStorage.setItem("token", JSON.stringify(res.data.token));
+      router.push("/");
+    });
   };
   return (
     <button

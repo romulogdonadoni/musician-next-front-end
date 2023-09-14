@@ -17,6 +17,8 @@ type Album = {
   description: string;
 };
 
+export const revalidate = 60;
+
 export default async function App() {
   const musics: Music[] = await axios.get("https://musician-project-be.onrender.com/get/music").then((res) => {
     return res.data;
@@ -24,10 +26,9 @@ export default async function App() {
   const albums: Album[] = await axios.get("https://musician-project-be.onrender.com/get/album").then((res) => {
     return res.data;
   });
-  
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 pr-3">
       <div className="flex flex-col gap-3">
         <h1 className="text-xl font-bold">
           Suas <span className="text-orange">músicas</span> mais ouvidas
