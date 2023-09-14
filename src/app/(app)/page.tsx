@@ -17,12 +17,7 @@ export default async function App() {
   });
 
   return (
-<<<<<<< HEAD
-    <div className="flex flex-col gap-6">
-      <h1>{session?.user.username}</h1>
-=======
     <div className="flex flex-col gap-6 pr-3">
->>>>>>> 7157f389273db0130aec41acd0879495a1a48bcc
       <div className="flex flex-col gap-3">
         <h1 className="text-xl font-bold">
           Suas <span className="text-orange">músicas</span> mais ouvidas
