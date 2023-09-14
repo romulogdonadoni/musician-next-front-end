@@ -1,4 +1,4 @@
-import { LoginFormData } from "@/app/auth/login/page";
+import { LoginFormData } from "@/types/types";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 interface LoginFormDataProps {
@@ -6,18 +6,15 @@ interface LoginFormDataProps {
 }
 export function LoginUser({ formData }: LoginFormDataProps) {
   const router = useRouter();
-<<<<<<< HEAD
-/*   const handleCreateUser = () => {
+  /*   const handleCreateUser = () => {
     axios.post("https://musician-project-be.onrender.com/auth/login", formData).then(() => router.push("/"));
   }; */
-=======
   const handleCreateUser = () => {
     axios.post("https://musician-project-be.onrender.com/auth/login", formData).then((res) => {
       localStorage.setItem("token", JSON.stringify(res.data.token));
       router.push("/");
     });
   };
->>>>>>> 7157f389273db0130aec41acd0879495a1a48bcc
   return (
     <button
       className="flex items-center justify-center rounded-2xl bg-orange p-2"

@@ -1,4 +1,4 @@
-import { RegisterFormData } from "@/app/auth/register/page";
+import { RegisterFormData } from "@/types/types";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
