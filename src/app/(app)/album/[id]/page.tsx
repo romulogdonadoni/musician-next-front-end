@@ -3,7 +3,7 @@ import { Album } from "@/types/types";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import {BsPlay} from "react-icons/bs"
+import { BsPlay } from "react-icons/bs";
 
 interface AlbumProps {
   params: {
@@ -27,7 +27,6 @@ export default async function Album({ params }: AlbumProps) {
         </div>
       </div>
 
-<<<<<<< HEAD
       <table>
         <tbody className="flex flex-col gap-3">
           {album[0].music.map((res, index) => {
@@ -45,25 +44,6 @@ export default async function Album({ params }: AlbumProps) {
             );
           })}
         </tbody>
-=======
-      <table className="flex flex-col gap-3">
-        <th className="flex">
-          <td className="flex items-center justify-center p-3 rounded-full bg-black-700 border border-silver-600 cursor-pointer hover:bg-black-600 ease-in-out duration-300"><BsPlay size={26} color={"#FF4C29"}/></td>
-        </th>
-        {album[0].music.map((res, index) => {
-          return (
-            <AlbumMusicList
-              key={res.id}
-              index={index}
-              name={res.name}
-              musicUrl={res.musicUrl}
-              imageUrl={res.imageUrl}
-              authorName={res.authorName}
-              views={res._count.musicViews}
-            />
-          );
-        })}
->>>>>>> 7157f389273db0130aec41acd0879495a1a48bcc
       </table>
     </div>
   );
