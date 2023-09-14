@@ -22,7 +22,7 @@ export default function NavBar() {
           <TbMusicUp size={26} color={"#FF4C29"} />
         </div>
         <Link href={"/auth/login"} className="flex gap-2 py-2 px-3 rounded-full cursor-pointer">
-          <span className="text-orange font-bold">Entrar</span>
+          <span className="text-orange font-bold">{"Entrar"}</span>
           <CgProfile size={26} color={"#FF4C29"} />
         </Link>
       </div>

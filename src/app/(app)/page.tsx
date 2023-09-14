@@ -5,6 +5,8 @@ import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "../api/auth/[...nextauth]/route";
 import { Album, Music } from "@/types/types";
 
+export const revalidate = 60;
+
 export default async function App() {
   const session = await getServerSession(nextAuthOptions);
   const musics: Music[] = await axios.get("https://musician-project-be.onrender.com/get/music").then((res) => {
@@ -15,8 +17,12 @@ export default async function App() {
   });
 
   return (
+<<<<<<< HEAD
     <div className="flex flex-col gap-6">
       <h1>{session?.user.username}</h1>
+=======
+    <div className="flex flex-col gap-6 pr-3">
+>>>>>>> 7157f389273db0130aec41acd0879495a1a48bcc
       <div className="flex flex-col gap-3">
         <h1 className="text-xl font-bold">
           Suas <span className="text-orange">músicas</span> mais ouvidas
