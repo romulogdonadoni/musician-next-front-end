@@ -1,14 +1,11 @@
 import AlbumContainer from "@/components/Album/AlbumContainer";
 import axios from "axios";
 import MusicContaniner from "@/components/Music/MusicContainer";
-import { getServerSession } from "next-auth";
-import { nextAuthOptions } from "../api/auth/[...nextauth]/route";
 import { Album, Music } from "@/types/types";
 
 export const revalidate = 60;
 
 export default async function App() {
-  const session = await getServerSession(nextAuthOptions);
   const musics: Music[] = await axios.get("https://musician-project-be.onrender.com/get/music").then((res) => {
     return res.data;
   });
