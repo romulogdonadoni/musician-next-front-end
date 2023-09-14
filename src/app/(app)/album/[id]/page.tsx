@@ -1,34 +1,16 @@
 import AlbumMusicList from "@/components/Music/AlbumMusicList";
+import { Album } from "@/types/types";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 
-type Album = [
-  {
-    id: string;
-    name: string;
-    authorName: string;
-    authorId: string;
-    imageUrl: string;
-    description: string;
-    music: Music[];
-  }
-];
-type Music = {
-  id: string;
-  name: string;
-  authorName: string;
-  imageUrl: string;
-  musicUrl: string;
-  _count: { musicViews: number };
-};
 interface AlbumProps {
   params: {
     id: string;
   };
 }
 export default async function Album({ params }: AlbumProps) {
-  const album: Album = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
+  const album: Album[] = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
     return res.data;
   });
   return (
@@ -44,20 +26,23 @@ export default async function Album({ params }: AlbumProps) {
         </div>
       </div>
 
-      <table className="flex flex-col gap-3">
-        {album[0].music.map((res, index) => {
-          return (
-            <AlbumMusicList
-              key={res.id}
-              index={index}
-              name={res.name}
-              musicUrl={res.musicUrl}
-              imageUrl={res.imageUrl}
-              authorName={res.authorName}
-              views={res._count.musicViews}
-            />
-          );
-        })}
+      <table>
+        <tbody className="flex flex-col gap-3">
+          {album[0].music.map((res, index) => {
+            return (
+              <AlbumMusicList
+                key={res.id}
+                id={res.id}
+                index={index}
+                name={res.name}
+                musicUrl={res.musicUrl}
+                imageUrl={res.imageUrl}
+                authorName={res.authorName}
+                views={res._count.musicViews}
+              />
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

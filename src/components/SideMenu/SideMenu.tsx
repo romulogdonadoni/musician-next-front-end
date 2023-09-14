@@ -5,12 +5,10 @@ import { HiPlusSm } from "react-icons/hi";
 import Link from "next/link";
 import PlayListContainer from "../Music/PlayListContainer";
 import axios from "axios";
+import { PlayList } from "@/types/types";
 
 const token =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MGYyOTU3LTA3MjMtNDYwMi1hOGFjLWMxMWNhYjVhNDc2MyIsImlhdCI6MTY5NDYyMjQ5N30.8XcT4G0n-wyt4t1RI7wKlAqt6cXRQKMrQ0IvQ8TRqjk";
-type PlayList = {
-  name: string;
-};
 
 export default async function SideMenu() {
   const playlist: PlayList[] = await axios
@@ -22,7 +20,6 @@ export default async function SideMenu() {
     .then((res) => {
       return res.data;
     });
-  console.log(playlist);
   return (
     <aside className="flex flex-col w-96 gap-3">
       <div className=" bg-black-800 p-3 rounded-lg">

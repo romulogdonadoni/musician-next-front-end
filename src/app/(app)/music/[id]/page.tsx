@@ -1,18 +1,39 @@
-"use client";
-import json from "@/assets/teste.json";
-import { useRef, useState } from "react";
+import { Music } from "@/types/types";
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function Music() {
-  const audio = useRef<HTMLAudioElement>(null);
-  const handleGoTo = (param:number) => {
+interface MusicProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function Music({ params }: MusicProps) {
+  const music: Music = await axios.get(`https://musician-project-be.onrender.com/get/music/${params.id}`).then((res) => {
+    return res.data;
+  });
+
+  /* const audio = useRef<HTMLAudioElement>(null);
+  const handleGoTo = (param: number) => {
     if (audio.current) {
       audio.current.currentTime = param;
     }
   };
-  const [currenTimeLine, setTimeLine] = useState<number>();
+  const [currenTimeLine, setTimeLine] = useState<number>(); */
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="text-xl font-bold">{json.tittle}</h1>
+      <div className="flex gap-3">
+        <Image src={music?.imageUrl} height={256} width={256} alt="" />
+        <div className="flex flex-col justify-center">
+          <p>Música</p>
+          <p className="font-bold text-9xl">{music?.name}</p>
+          <Link className="underline decoration-solid" href={`/album/${music?.authorId}`}>
+            {music?.authorName}
+          </Link>
+        </div>
+      </div>
+      {/* <h1 className="text-xl font-bold">{json.tittle}</h1>
       <div className="flex flex-col ga-2">
         {json.letter.map((res, index) => {
           return (
@@ -38,12 +59,11 @@ export default function Music() {
       <audio
         ref={audio}
         onTimeUpdate={(e) => {
-          console.log(e.currentTarget.currentTime);
           setTimeLine(e.currentTarget.currentTime);
         }}
         src="http://res.cloudinary.com/dfdebqf6e/video/upload/v1694548406/Musics/cxrumrjw7zsbki1ktntc.mp3"
         controls
-      />
+      /> */}
     </div>
   );
 }

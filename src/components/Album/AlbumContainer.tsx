@@ -19,7 +19,7 @@ export default function AlbumContainer({ id, name, imageUrl, authorName }: Album
       <Image src={imageUrl} height={136} width={136} alt="" className="rounded " />
       <div className="flex flex-col justify-center">
         <p className="flex-nowrap whitespace-nowrap">{name}</p>
-        <p className="flex-nowrap whitespace-nowrap">{authorName}</p>
+        <p className="flex-nowrap whitespace-nowrap text-xs text-gray-400">{authorName}</p>
       </div>
       <div className="flex flex-1 items-center justify-end opacity-0 group-hover/edit:opacity-100 ease-in-out duration-300">
         <HiOutlinePlay size={46} color={"#FF4C29"} />

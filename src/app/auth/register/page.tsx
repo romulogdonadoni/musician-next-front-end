@@ -1,16 +1,10 @@
 "use client";
 import Illustration from "@/../public/illu.svg";
 import { RegisterUser } from "@/components/Auth/RegisterUser";
+import { RegisterFormData } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-export type RegisterFormData = {
-  email: string;
-  username: string;
-  password: string;
-  role: string;
-};
 
 export default function Auth() {
   const [formData, setFormData] = useState<RegisterFormData>({ email: "", username: "", password: "", role: "ARTIST" });

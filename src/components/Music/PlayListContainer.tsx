@@ -1,6 +1,6 @@
 import { MdPlaylistPlay } from "react-icons/md";
 
-type PlayList = {
+interface PlayList {
   name: string;
 };
 

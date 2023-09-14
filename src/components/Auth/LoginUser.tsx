@@ -7,16 +7,15 @@ interface LoginFormDataProps {
 }
 export function LoginUser({ formData }: LoginFormDataProps) {
   const router = useRouter();
-  const handleCreateUser = () => {
+/*   const handleCreateUser = () => {
     axios.post("https://musician-project-be.onrender.com/auth/login", formData).then(() => router.push("/"));
-  };
+  }; */
   return (
     <button
       className="flex items-center justify-center rounded-2xl bg-orange p-2"
       type="submit"
       onClick={(e) => {
         e.preventDefault();
-        handleCreateUser();
       }}
     >
       Sign In

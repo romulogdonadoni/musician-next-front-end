@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useContext, useState } from "react";
 import { BsDot } from "react-icons/bs";
 import axios from "axios";
+import Link from "next/link";
+
 interface MusicTrack {
   id: string;
   name: string;
@@ -46,7 +48,9 @@ export default function MusicContainer({ id, name, imageUrl, authorName, musicUr
     >
       <Image src={imageUrl} height={64} width={64} alt="" className="rounded " />
       <div className="flex flex-col justify-center">
-        <p className="flex-nowrap whitespace-nowrap text-base">{name}</p>
+        <Link href={`/music/${id}`} className="flex-nowrap whitespace-nowrap text-base hover:underline decoration-solid">
+          {name}
+        </Link>
         <div className="flex items-center">
           <span className="flex-nowrap whitespace-nowrap text-xs text-gray-400">{authorName}</span>
           <BsDot color={"#9BA2AE"} /> <span className="flex-nowrap whitespace-nowrap text-xs text-gray-400">Views-{views}</span>

@@ -2,14 +2,12 @@
 
 import Illustration from "@/../public/illu.svg";
 import { LoginUser } from "@/components/Auth/LoginUser";
+import { LoginFormData } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export type LoginFormData = {
-  username: string;
-  password: string;
-};
+
 
 export default function Auth() {
   const [formData, setFormData] = useState<LoginFormData>({ username: "", password: "" });
