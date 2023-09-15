@@ -3,23 +3,9 @@ import { BiSearch } from "react-icons/bi";
 import { RiNeteaseCloudMusicLine } from "react-icons/ri";
 import { HiPlusSm } from "react-icons/hi";
 import Link from "next/link";
-import PlayListContainer from "../Music/PlayListContainer";
-import axios from "axios";
-import { PlayList } from "@/types/types";
-
-const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MGYyOTU3LTA3MjMtNDYwMi1hOGFjLWMxMWNhYjVhNDc2MyIsImlhdCI6MTY5NDYyMjQ5N30.8XcT4G0n-wyt4t1RI7wKlAqt6cXRQKMrQ0IvQ8TRqjk";
+import Playlist from "./Playlist";
 
 export default async function SideMenu() {
-  const playlist: PlayList[] = await axios
-    .get(`https://musician-project-be.onrender.com/get/playlist`, {
-      headers: {
-        Authorization: token,
-      },
-    })
-    .then((res) => {
-      return res.data;
-    });
   return (
     <aside className="flex flex-col w-96 gap-3">
       <div className=" bg-black-800 p-3 rounded-lg">
@@ -42,11 +28,7 @@ export default async function SideMenu() {
             <HiPlusSm size={26} />
           </div>
         </div>
-        <div className="flex flex-col flex-grow gap-3 overflow-y-auto h-0">
-          {playlist.map((res, index) => {
-            return <PlayListContainer key={index} name={res.name} />;
-          })}
-        </div>
+        <Playlist />
       </div>
     </aside>
   );

@@ -7,10 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-
-
 export default function Auth() {
-  const [formData, setFormData] = useState<LoginFormData>({ username: "", password: "" });
+  const [formData, setFormData] = useState<LoginFormData>({ email: "", password: "" });
 
   return (
     <div className="flex  overflow-clip">
@@ -23,15 +21,15 @@ export default function Auth() {
         <h1 className="text-xl font-bold">Login</h1>
         <form className="flex flex-col gap-2">
           <div className="flex flex-col gap-1">
-            <label>Nome</label>
+            <label>Email</label>
             <input
               className="bg-transparent outline-none border-2 border-orange rounded-2xl p-3"
-              placeholder="username"
+              placeholder="example@email.com"
               type="text"
               name=""
               id=""
               onChange={(e) => {
-                setFormData({ ...formData, username: e.target.value });
+                setFormData({ ...formData, email: e.target.value });
               }}
             />
           </div>
@@ -48,8 +46,10 @@ export default function Auth() {
               }}
             />
           </div>
-          <LoginUser formData={formData} />
-          <Link href={"/auth/register"}>Register</Link>
+          <div className="flex item-center justify-between">
+            <Link href={"/auth/register"} className="flex items-center text-orange">Register</Link>
+            <LoginUser formData={formData} />
+          </div>
         </form>
       </div>
     </div>

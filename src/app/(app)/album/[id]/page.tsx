@@ -3,7 +3,6 @@ import { Album } from "@/types/types";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { BsPlay } from "react-icons/bs";
 
 interface AlbumProps {
   params: {
@@ -11,6 +10,7 @@ interface AlbumProps {
   };
 }
 export default async function Album({ params }: AlbumProps) {
+
   const album: Album[] = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
     return res.data;
   });

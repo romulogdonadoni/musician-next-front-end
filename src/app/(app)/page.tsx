@@ -3,9 +3,8 @@ import axios from "axios";
 import MusicContaniner from "@/components/Music/MusicContainer";
 import { Album, Music } from "@/types/types";
 
-export const revalidate = 60;
-
 export default async function App() {
+
   const musics: Music[] = await axios.get("https://musician-project-be.onrender.com/get/music").then((res) => {
     return res.data;
   });

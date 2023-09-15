@@ -1,3 +1,4 @@
+import MusicProvider from "@/context/MusicContext";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="h-screen w-screen bg-black-950 text-white overflow-hidden ">{children}</body>
+      <body className="h-screen w-screen bg-black-950 text-white overflow-hidden ">
+        <MusicProvider>{children}</MusicProvider>
+      </body>
     </html>
   );
 }

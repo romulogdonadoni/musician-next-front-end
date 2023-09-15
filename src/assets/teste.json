@@ -1,90 +1,58 @@
 {
-  "tittle": "Amor De Fim De Noite",
   "letter": [
     [
-      { "word": "Want,", "time": 0.25 },
-      { "word": "want,", "time": 0.5 },
-      { "word": "you,", "time": 0.75 },
-      { "word": "baby,", "time": 1 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "Want,", "time": 2.25 },
-      { "word": "want,", "time": 2.5 },
-      { "word": "you,", "time": 2.75 },
-      { "word": "baby,", "time": 4.25 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "When,", "time": 6.8 },
-      { "word": "are", "time": 7.3 },
-      { "word": "you", "time": 7.7 },
-      { "word": "coming", "time": 8.2 },
-      { "word": "back?", "time": 8.7 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "(Scotz,", "time": 6 },
-      { "word": "this", "time": 7 },
-      { "word": "bitch", "time": 8 },
-      { "word": "is", "time": 9 },
-      { "word": "crazy)", "time": 10 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "Want,", "time": 1.75 },
-      { "word": "want,", "time": 2.4 },
-      { "word": "you,", "time": 3 },
-      { "word": "baby,", "time": 3 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "Want,", "time": 3.25 },
-      { "word": "want,", "time": 2.4 },
-      { "word": "you,", "time": 3 },
-      { "word": "baby,", "time": 3 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "Deixa", "time": 18 },
-      { "word": "eu", "time": 19 },
-      { "word": "mudar", "time": 20 },
-      { "word": "essa", "time": 21 },
-      { "word": "nossa,", "time": 22 },
-      { "word": "história,", "time": 23 },
-      { "word": "hoje", "time": 24 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "Vamos", "time": 25 },
-      { "word": "ser", "time": 26 },
-      { "word": "mais", "time": 27 },
-      { "word": "que", "time": 28 },
-      { "word": "amor,", "time": 29 },
-      { "word": "de,", "time": 30 },
-      { "word": "fim", "time": 31 },
-      { "word": "de", "time": 32 },
-      { "word": "noite", "time": 33 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ],
     [
-      { "word": "Eu", "time": 34 },
-      { "word": "posso", "time": 35 },
-      { "word": "fazer", "time": 36 },
-      { "word": "tudo,", "time": 37 },
-      { "word": "ser", "time": 38 },
-      { "word": "melhor", "time": 39 },
-      { "word": "do", "time": 40 },
-      { "word": "que", "time": 41 },
-      { "word": "da", "time": 42 },
-      { "word": "última", "time": 43 },
-      { "word": "vez", "time": 44 }
-    ],
-    [
-      { "word": "E", "time": 45 },
-      { "word": "fazer", "time": 46 },
-      { "word": "bem", "time": 47 },
-      { "word": "melhor,", "time": 48 },
-      { "word": "do", "time": 49 },
-      { "word": "que", "time": 50 },
-      { "word": "seu", "time": 51 },
-      { "word": "ex", "time": 52 },
-      { "word": "um", "time": 53 },
-      { "word": "dia", "time": 54 },
-      { "word": "te", "time": 55 },
-      { "word": "fez", "time": 56 }
+      { "word": "Letra,", "time": 0.25 },
+      { "word": "Letra,", "time": 0.5 },
+      { "word": "Letra,", "time": 0.75 },
+      { "word": "Letra,", "time": 1 }
     ]
   ]
 }

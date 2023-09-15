@@ -1,26 +1,27 @@
 import { LoginFormData } from "@/types/types";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { setCookie, destroyCookie } from "nookies";
+
 interface LoginFormDataProps {
   formData: LoginFormData;
 }
 export function LoginUser({ formData }: LoginFormDataProps) {
   const router = useRouter();
-  /*   const handleCreateUser = () => {
-    axios.post("https://musician-project-be.onrender.com/auth/login", formData).then(() => router.push("/"));
-  }; */
   const handleCreateUser = () => {
     axios.post("https://musician-project-be.onrender.com/auth/login", formData).then((res) => {
-      localStorage.setItem("token", JSON.stringify(res.data.token));
-      router.push("/");
+      destroyCookie(undefined, "token")
+      setCookie(undefined, "token", `Bearer ${res.data.token}`, { path: "/", maxAge: 60 * 60 * 1 });
+      router.replace("/");
     });
   };
   return (
     <button
-      className="flex items-center justify-center rounded-2xl bg-orange p-2"
+      className="flex items-center justify-center rounded-2xl bg-orange py-2 px-4"
       type="submit"
       onClick={(e) => {
         e.preventDefault();
+        handleCreateUser();
       }}
     >
       Sign In

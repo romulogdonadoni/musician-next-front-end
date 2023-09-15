@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import MusicProvider from "@/context/MusicContext";
 import NavBar from "@/components/NavBar/NavBar";
 import Player from "@/components/Player/Player";
 import SideMenu from "@/components/SideMenu/SideMenu";
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <MusicProvider>
       <div className="flex h-screen max-h-screen flex-col flex-1 p-3 gap-3">
         <div className="flex flex-1 flex-rol gap-3 ">
           <SideMenu />
@@ -22,7 +20,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
         <Player />
       </div>
-    </MusicProvider>
   );
 }
                                                                                                                                                                                           

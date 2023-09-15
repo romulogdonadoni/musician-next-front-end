@@ -23,7 +23,7 @@ export type Artist = {
   username: string;
 };
 export type LoginFormData = {
-  username: string;
+  email: string;
   password: string;
 };
 export type RegisterFormData = {

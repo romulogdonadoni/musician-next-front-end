@@ -5,6 +5,8 @@ import React, { createContext, useState } from "react";
 type MusicContextProps = {
   music: Music;
   setMusic: React.Dispatch<React.SetStateAction<Music>>;
+  currentTime: number;
+  setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type Music = {
@@ -17,6 +19,8 @@ type Music = {
 export const MusicContext = createContext<MusicContextProps | null>({
   music: { authorName: "", imageUrl: "", musicUrl: "", name: "" },
   setMusic: () => {},
+  currentTime: 0,
+  setCurrentTime: () => {},
 });
 
 export default function MusicProvider({ children }: { children: React.ReactNode }) {
@@ -26,6 +30,7 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
     imageUrl: "",
     musicUrl: "",
   });
+  const [currentTime, setCurrentTime] = useState<number>(0);
 
-  return <MusicContext.Provider value={{ music, setMusic }}>{children}</MusicContext.Provider>;
+  return <MusicContext.Provider value={{ music, setMusic, currentTime, setCurrentTime }}>{children}</MusicContext.Provider>;
 }
