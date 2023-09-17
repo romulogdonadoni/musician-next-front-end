@@ -1,9 +1,11 @@
-import AlbumContainer from "@/components/Album/AlbumContainer";
+import AlbumContainer from "@/components/Music/AlbumContainer";
 import axios from "axios";
 import MusicContaniner from "@/components/Music/MusicContainer";
 import { Album, Artist, FavoriteMusics, Music } from "@/types/types";
 import ArtistContaier from "@/components/Music/ArtistContaier";
 import { cookies } from "next/headers";
+
+
 
 export default async function App() {
   const cookiesStorage = cookies();
@@ -13,7 +15,7 @@ export default async function App() {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => console.log(err));
+    .catch(() => {return});
   
   
     const favoriteMusic: FavoriteMusics[] = await axios
@@ -23,7 +25,7 @@ export default async function App() {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => console.log(err));
+    .catch(() => {return});
   
   
     const albums: Album[] = await axios
@@ -31,7 +33,7 @@ export default async function App() {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => console.log(err));
+    .catch(() => {return});
   
   
     const artist: Artist[] = await axios
@@ -39,7 +41,7 @@ export default async function App() {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => console.log(err));
+    .catch(() => {return});
   
   
   return (

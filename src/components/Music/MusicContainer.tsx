@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useContext } from "react";
 import { BsDot } from "react-icons/bs";
 import Link from "next/link";
+import { getCookie } from "cookies-next";
+import axios from "axios";
 
 interface MusicTrack {
   id: string;
@@ -24,20 +26,21 @@ export default function MusicContainer({ id, name, imageUrl, authorName, musicUr
   }
   const { setMusic } = musicContext;
 
-  /* const handleCreateView = async (musicId: string) => {
-    await axios.post(`https://musician-project-be.onrender.com/create/view/${musicId}`, null, { headers });
-  }; */
+  const handleCreateView = async (musicId: string) => {
+    await axios
+      .post(`https://musician-project-be.onrender.com/create/view/${musicId}`, null, {
+        headers: { Authorization: `Bearer ${getCookie("auth-token")}` },
+      })
+      .catch(() => {
+        return;
+      });
+  };
 
   return (
     <div
       onClick={() => {
-        /* handleCreateView(id); */
-        setMusic({
-          name: name,
-          authorName: authorName,
-          imageUrl: imageUrl,
-          musicUrl: musicUrl,
-        });
+        setMusic({ name: name, authorName: authorName, imageUrl: imageUrl, musicUrl: musicUrl });
+        handleCreateView(id);
       }}
       className="group/edit flex flex-1  bg-black-700 border border-silver-600 rounded-lg p-2 gap-2 cursor-pointer hover:bg-black-600 ease-in-out duration-300  "
     >

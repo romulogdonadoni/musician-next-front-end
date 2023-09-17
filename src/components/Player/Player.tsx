@@ -16,10 +16,15 @@ export default function Player() {
   ]);
   const nextMusic = () => {
     setCurrentTrackOnList(currentTrackOnList + 1);
-    if (audioRef.current?.HAVE_CURRENT_DATA) {
+    if (audioRef.current) {
       audioRef.current?.play();
     }
   };
+  useEffect(() => {
+    if (audioRef.current?.HAVE_CURRENT_DATA) {
+      audioRef?.current?.play();
+    }
+  }, [musicContext?.music.musicUrl]);
 
   return (
     <div className="flex flex-grow-1 items-center justify-center h-24 min-h-24 gap-10">
@@ -45,12 +50,9 @@ export default function Player() {
         className="flex flex-1"
         controls
         onEnded={() => nextMusic()}
-        preload="auto"
       />
 
-      <div className="flex flex-1">
-        
-      </div>
+      <div className="flex flex-1"></div>
     </div>
   );
 }

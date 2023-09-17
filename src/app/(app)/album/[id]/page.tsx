@@ -11,25 +11,25 @@ interface AlbumProps {
 }
 export default async function Album({ params }: AlbumProps) {
 
-  const album: Album[] = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
+  const album: Album = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
     return res.data;
   });
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-3">
-        <Image className="object-cover w-64 h-64" src={album[0]?.imageUrl} height={256} width={256} alt="" />
+        <Image className="object-cover w-64 h-64" src={album?.imageUrl} height={256} width={256} alt="" />
         <div className="flex flex-col justify-center">
           <p>Álbum</p>
-          <p className="font-bold text-9xl">{album[0]?.name}</p>
-          <Link className="underline decoration-solid" href={`/artist/${album[0]?.authorId}`}>
-            {album[0]?.authorName}
+          <p className="font-bold text-9xl">{album?.name}</p>
+          <Link className="underline decoration-solid" href={`/artist/${album?.authorId}`}>
+            {album?.authorName}
           </Link>
         </div>
       </div>
 
       <table>
         <tbody className="flex flex-col gap-3">
-          {album[0].music.map((res, index) => {
+          {album.music.map((res, index) => {
             return (
               <AlbumMusicList
                 key={res.id}
