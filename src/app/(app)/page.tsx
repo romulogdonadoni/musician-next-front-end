@@ -8,42 +8,63 @@ import { cookies } from "next/headers";
 export default async function App() {
   const cookiesStorage = cookies();
 
-  const musics: Music[] = await axios.get("https://musician-project-be.onrender.com/get/music").then((res) => {
-    return res.data;
-  });
-  const favoriteMusic: FavoriteMusics[] = await axios
+  const musics: Music[] = await axios
+    .get("https://musician-project-be.onrender.com/get/music")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+  
+  
+    const favoriteMusic: FavoriteMusics[] = await axios
     .get("https://musician-project-be.onrender.com/get/music/favorite", {
       headers: { Authorization: `Bearer ${cookiesStorage.get("auth-token")?.value}` },
     })
     .then((res) => {
       return res.data;
-    });
-  const albums: Album[] = await axios.get("https://musician-project-be.onrender.com/get/album").then((res) => {
-    return res.data;
-  });
-  const artist: Artist[] = await axios.get("https://musician-project-be.onrender.com/get/artist").then((res) => {
-    return res.data;
-  });
-  console.log(artist);
+    })
+    .catch((err) => console.log(err));
+  
+  
+    const albums: Album[] = await axios
+    .get("https://musician-project-be.onrender.com/get/album")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+  
+  
+    const artist: Artist[] = await axios
+    .get("https://musician-project-be.onrender.com/get/artist")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+  
+  
   return (
     <div className="flex flex-col gap-6 pr-3">
-      <div className="flex flex-col gap-3">
-        <h1 className="text-xl font-bold">
-          Suas <span className="text-orange">músicas</span> mais ouvidas
-        </h1>
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3">
-          {favoriteMusic?.slice(0,8).map((res) => (
-            <MusicContaniner
-              key={res.music.id}
-              id={res.music.id}
-              name={res.music.name}
-              imageUrl={res.music.imageUrl}
-              authorName={res.music.authorName}
-              musicUrl={res.music.musicUrl}
-            />
-          ))}
+      {cookiesStorage.has("auth-token") ? (
+        <div className="flex flex-col gap-3">
+          <h1 className="text-xl font-bold">
+            Suas <span className="text-orange">músicas</span> mais ouvidas
+          </h1>
+          <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3">
+            {favoriteMusic?.slice(0, 8).map((res) => (
+              <MusicContaniner
+                key={res.music.id}
+                id={res.music.id}
+                name={res.music.name}
+                imageUrl={res.music.imageUrl}
+                authorName={res.music.authorName}
+                musicUrl={res.music.musicUrl}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
       <div className="flex flex-col gap-3">
         <h1 className="text-xl font-bold">
           As <span className="text-orange">músicas</span> mais ouvidas
