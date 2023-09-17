@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Playlist() {
   const [playlist, setPlaylist] = useState<PlayList[] | undefined>();
 
-  if (!playlist) {
+  if (!playlist && hasCookie("auth-token")) {
     getPlaylist();
   }
 
