@@ -1,34 +1,26 @@
+"use client";
 import { instance } from "@/config/axiosConfig";
 import PlayListContainer from "../Music/PlayListContainer";
 import { PlayList } from "@/types/types";
-import axios from "axios";
-import { cookies } from "next/headers";
+import { getCookie, hasCookie } from "cookies-next";
+import { useEffect, useState } from "react";
 
-export default async function Playlist() {
-  const cookiesStorage = cookies();
-  if (!cookiesStorage.has("auth-token")) {
-    return <div className="flex flex-col flex-grow gap-3 overflow-y-auto h-0  p-3">Entre para ver sua biblioteca</div>;
+export default function Playlist() {
+  const [playlist, setPlaylist] = useState<PlayList[] | undefined>();
+
+  if (!playlist) {
+    getPlaylist();
   }
 
-  /* const playlist: PlayList[] = await axios
-    .get(`https://musician-project-be.onrender.com/get/playlist`, {
-      headers: {
-        Authorization: `Bearer ${cookiesStorage.get("token")?.value}`,
-      },
-    })
-    .then((res) => {
-      return res.data;
-    }); */
-
-  const playlist: PlayList[] = await instance
-    .get(`/get/playlist`, { headers: { Authorization: `Bearer ${cookiesStorage.get("auth-token")?.value}` } })
-    .then((res) => {
-      return res.data;
+  async function getPlaylist() {
+    await instance.get(`/get/playlist`, { headers: { Authorization: `Bearer ${getCookie("auth-token")}` } }).then((res) => {
+      setPlaylist(res.data);
     });
-  console.log(playlist);
+  }
+
   return (
     <div className="flex flex-col flex-grow gap-3 overflow-y-auto h-0  p-3">
-      {playlist.map((res, index) => {
+      {playlist?.map((res, index) => {
         return <PlayListContainer key={index} name={res.name} />;
       })}
     </div>
