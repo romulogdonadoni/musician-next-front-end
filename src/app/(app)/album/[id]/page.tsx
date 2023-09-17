@@ -17,7 +17,7 @@ export default async function Album({ params }: AlbumProps) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-3">
-        <Image src={album[0]?.imageUrl} height={256} width={256} alt="" />
+        <Image className="object-cover w-64 h-64" src={album[0]?.imageUrl} height={256} width={256} alt="" />
         <div className="flex flex-col justify-center">
           <p>Álbum</p>
           <p className="font-bold text-9xl">{album[0]?.name}</p>

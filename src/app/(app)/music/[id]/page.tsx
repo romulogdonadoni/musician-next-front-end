@@ -18,7 +18,7 @@ export default async function Music({ params }: MusicProps) {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex gap-3">
-        <Image src={music?.imageUrl} height={256} width={256} alt="" />
+        <Image className="object-cover w-64 h-64" src={music?.imageUrl} height={256} width={256} alt="" />
         <div className="flex flex-col justify-center">
           <p>Música</p>
           <p className="font-bold text-9xl">{music?.name}</p>

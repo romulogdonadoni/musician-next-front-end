@@ -1,4 +1,3 @@
-import AlbumMusicList from "@/components/Music/AlbumMusicList";
 import { Artist } from "@/types/types";
 import axios from "axios";
 import Image from "next/image";

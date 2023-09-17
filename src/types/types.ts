@@ -17,6 +17,19 @@ export type Music = {
   _count: { musicViews: number };
   authorId: string;
 };
+
+export type FavoriteMusics = {
+  count: number;
+  music: {
+    id: string;
+    name: string;
+    authorName: string;
+    imageUrl: string;
+    musicUrl: string;
+    authorId: string;
+  };
+};
+
 export type Artist = {
   id: string;
   image: string;

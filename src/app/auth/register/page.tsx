@@ -1,6 +1,5 @@
 "use client";
 import Illustration from "@/../public/illu.svg";
-import { RegisterUser } from "@/components/Auth/RegisterUser";
 import { RegisterFormData } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,7 +61,6 @@ export default function Auth() {
               id=""
             />
           </div>
-          <RegisterUser formData={formData} />
           <Link href={"/auth/login"}>Login</Link>
         </form>
       </div>

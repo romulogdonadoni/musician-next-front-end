@@ -1,15 +1,15 @@
 "use client";
 
 import Illustration from "@/../public/illu.svg";
-import { LoginUser } from "@/components/Auth/LoginUser";
+import { AuthContext } from "@/context/AuthContext";
 import { LoginFormData } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export default function Auth() {
   const [formData, setFormData] = useState<LoginFormData>({ email: "", password: "" });
-
+  const { handleSignIn } = useContext(AuthContext);
   return (
     <div className="flex  overflow-clip">
       <div className="flex flex-col bg-black-800 p-10 border border-silver-600 rounded-l-2xl">
@@ -47,8 +47,19 @@ export default function Auth() {
             />
           </div>
           <div className="flex item-center justify-between">
-            <Link href={"/auth/register"} className="flex items-center text-orange">Register</Link>
-            <LoginUser formData={formData} />
+            <Link href={"/auth/register"} className="flex items-center text-orange">
+              Register
+            </Link>
+            <button
+              className="flex items-center justify-center rounded-2xl bg-orange py-2 px-4"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSignIn(formData);
+              }}
+            >
+              Sign In
+            </button>
           </div>
         </form>
       </div>

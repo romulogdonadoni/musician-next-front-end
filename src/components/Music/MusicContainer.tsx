@@ -3,9 +3,8 @@
 import { HiOutlinePlay } from "react-icons/hi";
 import { MusicContext } from "@/context/MusicContext";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BsDot } from "react-icons/bs";
-import axios from "axios";
 import Link from "next/link";
 
 interface MusicTrack {
@@ -14,7 +13,7 @@ interface MusicTrack {
   authorName: string;
   imageUrl: string;
   musicUrl: string;
-  views: number;
+  views?: number;
 }
 
 export default function MusicContainer({ id, name, imageUrl, authorName, musicUrl, views }: MusicTrack) {
@@ -25,18 +24,14 @@ export default function MusicContainer({ id, name, imageUrl, authorName, musicUr
   }
   const { setMusic } = musicContext;
 
-  const headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MGYyOTU3LTA3MjMtNDYwMi1hOGFjLWMxMWNhYjVhNDc2MyIsImlhdCI6MTY5NDYyMjQ5N30.8XcT4G0n-wyt4t1RI7wKlAqt6cXRQKMrQ0IvQ8TRqjk",
-  };
-  const handleCreateView = async (musicId: string) => {
+  /* const handleCreateView = async (musicId: string) => {
     await axios.post(`https://musician-project-be.onrender.com/create/view/${musicId}`, null, { headers });
-  };
+  }; */
 
   return (
     <div
       onClick={() => {
-        handleCreateView(id);
+        /* handleCreateView(id); */
         setMusic({
           name: name,
           authorName: authorName,
