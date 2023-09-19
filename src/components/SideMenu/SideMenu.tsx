@@ -15,7 +15,7 @@ export default function SideMenu() {
     setOpen(!open);
   };
   return (
-    <aside className="flex flex-col w-96 gap-3">
+    <aside className="flex flex-col w-105 gap-3">
       <div className=" bg-black-800 rounded-lg">
         <Link href={"/"} className="flex flex-row items-center gap-2 p-3 hover:text-orange rounded-lg ease-in-out duration-300 cursor-pointer">
           <GoHome size={26} />

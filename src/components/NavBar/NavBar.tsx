@@ -19,7 +19,7 @@ export default function NavBar() {
   const token = getCookie("auth-token");
 
   useEffect(() => {
-    setUser(jwtDecode(token!));
+    hasCookie("auth-token") ? setUser(jwtDecode(token!)) : null;
   }, [token]);
 
   return (

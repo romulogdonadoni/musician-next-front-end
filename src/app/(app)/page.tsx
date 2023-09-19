@@ -17,16 +17,18 @@ export default async function App() {
       return;
     });
 
-  const favoriteMusic: FavoriteMusics[] = await axios
-    .get("https://musician-project-be.onrender.com/get/music/favorite", {
-      headers: { Authorization: `Bearer ${cookiesStorage.get("auth-token")?.value}` },
-    })
-    .then((res) => {
-      return res.data;
-    })
-    .catch(() => {
-      return;
-    });
+  const favoriteMusic: FavoriteMusics[] = cookiesStorage.has("auth-token")
+    ? await axios
+        .get("https://musician-project-be.onrender.com/get/music/favorite", {
+          headers: { Authorization: `Bearer ${cookiesStorage.get("auth-token")?.value}` },
+        })
+        .then((res) => {
+          return res.data;
+        })
+        .catch(() => {
+          return;
+        })
+    : null;
 
   const albums: Album[] = await axios
     .get("https://musician-project-be.onrender.com/get/album")
