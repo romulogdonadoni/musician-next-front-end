@@ -16,9 +16,11 @@ interface MusicTrack {
   imageUrl: string;
   musicUrl: string;
   views?: number;
+  letter?: { verses: [[{ time: number; word: string }]] };
+
 }
 
-export default function MusicContainer({ id, name, imageUrl, authorName, musicUrl, views }: MusicTrack) {
+export default function MusicContainer({ id, name, imageUrl, authorName, musicUrl, views, letter }: MusicTrack) {
   const musicContext = useContext(MusicContext);
 
   if (!musicContext) {
@@ -39,7 +41,7 @@ export default function MusicContainer({ id, name, imageUrl, authorName, musicUr
   return (
     <div
       onClick={() => {
-        setMusic({ name: name, authorName: authorName, imageUrl: imageUrl, musicUrl: musicUrl });
+        setMusic({ name: name, authorName: authorName, imageUrl: imageUrl, musicUrl: musicUrl, letter: letter });
         handleCreateView(id);
       }}
       className="group/edit flex flex-1  bg-black-700 border border-silver-600 rounded-lg p-2 gap-2 cursor-pointer hover:bg-black-600 ease-in-out duration-300  "

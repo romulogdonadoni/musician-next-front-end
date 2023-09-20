@@ -14,10 +14,11 @@ type Music = {
   authorName: string;
   imageUrl: string | undefined;
   musicUrl: string;
+  letter?: { verses: [[{ time: number; word: string }]] };
 };
 
 export const MusicContext = createContext<MusicContextProps | null>({
-  music: { authorName: "", imageUrl: "", musicUrl: "", name: "" },
+  music: { authorName: "", imageUrl: "", musicUrl: "", name: "", letter: { verses: [[{ time: 0, word: "" }]] }},
   setMusic: () => {},
   currentTime: 0,
   setCurrentTime: () => {},
@@ -29,6 +30,7 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
     authorName: "",
     imageUrl: "",
     musicUrl: "",
+    letter: { verses: [[{ time: 0, word: "" }]] }
   });
   const [currentTime, setCurrentTime] = useState<number>(0);
 

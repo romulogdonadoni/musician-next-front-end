@@ -103,6 +103,7 @@ export default async function App() {
               authorName={res.authorName}
               musicUrl={res.musicUrl}
               views={res._count.musicViews}
+              letter={res.letter}
             />
           ))}
         </div>

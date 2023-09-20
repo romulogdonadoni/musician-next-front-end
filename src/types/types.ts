@@ -16,6 +16,7 @@ export type Music = {
   musicUrl: string;
   _count: { musicViews: number };
   authorId: string;
+  letter?: { verses: [[{ time: number; word: string }]] };
 };
 
 export type FavoriteMusics = {

@@ -10,26 +10,26 @@ export default function TrackLetter() {
   }, [musicContext?.currentTime]);
   return (
     <>
-      <div className="flex flex-col ga-2">
-        {json.letter.map((res, index) => {
-          return (
-            <div className="flex gap-1" key={index}>
-              {res.map((res, index) => {
-                return (
-                  <span
-                    className={`transition-all duration-300 cursor-pointer ${
-                      res.time < musicContext?.currentTime! ? "text-orange" : "text-gray-500"
-                    } hover:text-white`}
-                    key={index}
-                  >
-                    {res.word}{" "}
-                  </span>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
+      <div className="flex flex-col" >
+          {musicContext?.music.letter?.verses.map((res, index) => {
+            return (
+              <div className="flex flex-col gap-1" key={index}>
+                {res.map((res, index) => {
+                  return (
+                    <span
+                      className={`transition-all duration-300 cursor-pointer ${
+                        res.time < musicContext?.currentTime! ? "text-orange" : "text-gray-500"
+                      } hover:text-white`}
+                      key={index}
+                    >
+                      {res.word}{" "}
+                    </span>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
     </>
   );
 }
