@@ -48,7 +48,11 @@ export default function Player() {
       audioRef.current?.play();
     }
   };
-
+  const goToTime = (time:number) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = time;
+    }
+  };
   const handlePause = () => {
     if (audioRef.current) {
       setIsPlay(false);
@@ -170,6 +174,7 @@ export default function Player() {
                 {res.map((res, index) => {
                   return (
                     <span
+                      onClick={()=> goToTime(res.time)}
                       className={`transition-all duration-300 cursor-pointer ${
                         res.time < musicContext?.currentTime! ? "text-orange" : "text-gray-500"
                       } hover:text-white`}

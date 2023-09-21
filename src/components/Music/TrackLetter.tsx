@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
-import json from "@/assets/teste.json";
 import { MusicContext } from "@/context/MusicContext";
 export default function TrackLetter() {
   const musicContext = useContext(MusicContext);
