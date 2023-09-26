@@ -13,7 +13,7 @@ interface MusicTrackAlbum {
   musicUrl: string;
   imageUrl: string;
   authorName: string;
-  views: number;
+  views?: number;
 }
 export default function AlbumMusicList({ id, name, index, musicUrl, imageUrl, authorName, views }: MusicTrackAlbum) {
   const musicContext = useContext(MusicContext);

@@ -14,32 +14,42 @@ export default function ModalPlaylist({ handleOpenModal }: ModalPlaylistProps) {
   const handleCreatePlaylist = async () => {
     if (namePlaylist != "") {
       await instance
-        .post("/create/playlist", { name: namePlaylist }, { headers: { Authorization: `Bearer ${getCookie("auth-token")}` } })
+        .post(
+          "/create/playlist",
+          { name: namePlaylist },
+          { headers: { Authorization: `Bearer ${getCookie("auth-token")}` } },
+        )
         .then(() => handleOpenModal());
     }
   };
 
   return (
-    <div className="flex justify-center items-center fixed top-0 left-0 bg-opacity-50 bg-black backdrop-blur z-10 h-screen w-screen ">
-      <div className="flex flex-col bg-black-700 border border-silver-600 p-4 gap-2 rounded-lg">
+    <div className="fixed left-0 top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-50 backdrop-blur ">
+      <div className="flex flex-col gap-2 rounded-lg border border-silver-600 bg-black-700 p-4">
         <div className="flex justify-between p-2">
-          <h1 className="font-bold text-base">Criar Playlist</h1>
-          <div onClick={() => handleOpenModal()} className="bg-red-500 rounded-full p-1 cursor-pointer">
+          <h1 className="text-base font-bold">Criar Playlist</h1>
+          <div
+            onClick={() => handleOpenModal()}
+            className="cursor-pointer rounded-full bg-red-500 p-1"
+          >
             <IoClose size={20} />
           </div>
         </div>
         <div className="flex">
-          <div className="flex items-center p-2 rounded-full border border-silver-600">
-            <div className="rounded-full p-1 cursor-pointer">
+          <div className="flex items-center rounded-full border border-silver-600 p-2">
+            <div className="cursor-pointer rounded-full p-1">
               <MdPlaylistAdd size={26} />
             </div>
             <input
               type="text"
-              className="bg-transparent border-none outline-none p-1"
+              className="border-none bg-transparent p-1 outline-none"
               placeholder="Nome da sua playlist..."
               onChange={(e) => setNamePlaylist(e.target.value)}
             />
-            <div onClick={() => handleCreatePlaylist()} className="bg-green-500 rounded-full p-1 cursor-pointer">
+            <div
+              onClick={() => handleCreatePlaylist()}
+              className="cursor-pointer rounded-full bg-green-500 p-1"
+            >
               <BsPlus size={20} />
             </div>
           </div>

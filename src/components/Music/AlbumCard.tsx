@@ -1,8 +1,8 @@
 "use client";
 
-import { HiOutlinePlay } from "react-icons/hi";
 import Image from "next/image";
 import Link from "next/link";
+
 
 interface AlbumContainer {
   id: string;
@@ -11,6 +11,7 @@ interface AlbumContainer {
   imageUrl: string;
 }
 export default function AlbumContainer({ id, name, imageUrl, authorName }: AlbumContainer) {
+
   return (
     <Link
       href={`/album/${id}`}

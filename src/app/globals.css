@@ -6,6 +6,9 @@
   -webkit-font-smoothing: antialiased;
   user-select: none;
 }
+.disabled {
+  pointer-events: none;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }

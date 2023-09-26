@@ -1,12 +1,8 @@
-"use client";
-
-import { useContext, useEffect, useRef, useState } from "react";
+"use client"
+import { useContext, useEffect} from "react";
 import { MusicContext } from "@/context/MusicContext";
 export default function TrackLetter() {
   const musicContext = useContext(MusicContext);
-  useEffect(() => {
-    console.log(musicContext?.currentTime);
-  }, [musicContext?.currentTime]);
   return (
     <>
       <div className="flex flex-col" >

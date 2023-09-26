@@ -1,8 +1,8 @@
-import AlbumContainer from "@/components/Music/AlbumContainer";
+import AlbumContainer from "@/components/Music/AlbumCard";
 import axios from "axios";
-import MusicContaniner from "@/components/Music/MusicContainer";
+import MusicContaniner from "@/components/Music/MusicCard";
 import { Album, Artist, FavoriteMusics, Music } from "@/types/types";
-import ArtistContaier from "@/components/Music/ArtistContaier";
+import ArtistContaier from "@/components/Music/ArtistCard";
 import { cookies } from "next/headers";
 
 export default async function App() {

@@ -12,15 +12,15 @@ const config: Config = {
       borderColor: { "silver-600": "#303030" },
     },
     screens: {
-      'sm': {'min': '640px'},
+      sm: { min: "640px" },
 
-      'md': {'min': '768px'},
+      md: { min: "768px" },
 
-      'lg': {'min': '1024px'},
+      lg: { min: "1024px" },
 
-      'xl': {'min': '1280px'},
+      xl: { min: "1280px" },
 
-      '2xl': {'min': '1440px'},
+      "2xl": { min: "1440px" },
     },
   },
 
