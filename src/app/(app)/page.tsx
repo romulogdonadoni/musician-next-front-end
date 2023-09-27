@@ -1,6 +1,6 @@
 import AlbumContainer from "@/components/Music/AlbumCard";
 import axios from "axios";
-import MusicContaniner from "@/components/Music/MusicCard";
+import MusicCard from "@/components/Music/MusicCard";
 import { Album, Artist, FavoriteMusics, Music } from "@/types/types";
 import ArtistContaier from "@/components/Music/ArtistCard";
 import { cookies } from "next/headers";
@@ -66,7 +66,7 @@ export default async function App() {
             "
           >
             {favoriteMusic?.slice(0, 8).map((res) => (
-              <MusicContaniner
+              <MusicCard
                 key={res.music.id}
                 id={res.music.id}
                 name={res.music.name}
@@ -95,7 +95,7 @@ export default async function App() {
             "
         >
           {musics?.map((res) => (
-            <MusicContaniner
+            <MusicCard
               key={res.id}
               id={res.id}
               name={res.name}

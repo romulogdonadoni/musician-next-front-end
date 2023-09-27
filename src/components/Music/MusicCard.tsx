@@ -10,6 +10,7 @@ import { getCookie } from "cookies-next";
 import axios from "axios";
 import * as ContextMenu from "@radix-ui/react-context-menu";
 import { Share1Icon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { FiPlayCircle, FiStar } from "react-icons/fi";
 
 interface MusicTrack {
   id: string;
@@ -21,7 +22,7 @@ interface MusicTrack {
   letter?: { verses: [[{ time: number; word: string }]] };
 }
 
-export default function MusicContainer({
+export default function MusicCard({
   id,
   name,
   imageUrl,
@@ -67,13 +68,18 @@ export default function MusicContainer({
           }}
           className="group/edit flex flex-1  cursor-pointer gap-2 rounded-lg border border-silver-600 bg-black-700 p-2 duration-300 ease-in-out hover:bg-black-600  "
         >
-          <Image
-            src={imageUrl}
-            height={64}
-            width={64}
-            alt=""
-            className="rounded "
-          />
+          <div className="relative flex">
+            <Image
+              src={imageUrl}
+              height={64}
+              width={64}
+              alt=""
+              className="rounded "
+            />
+            <div className="absolute flex h-full w-full flex-1 items-center justify-center rounded bg-black bg-opacity-50 opacity-0 duration-300 ease-in-out group-hover/edit:opacity-100">
+              <FiPlayCircle size={46} color={"#FF4C29"} />
+            </div>
+          </div>
           <div className="flex flex-col justify-center">
             <Link
               href={`/music/${id}`}
@@ -91,8 +97,8 @@ export default function MusicContainer({
               </span>
             </div>
           </div>
-          <div className="flex flex-1 items-center justify-end opacity-0 duration-300 ease-in-out group-hover/edit:opacity-100">
-            <HiOutlinePlay size={46} color={"#FF4C29"} />
+          <div className=" flex flex-1 items-center justify-end ">
+            <FiStar size={26} color="#FF4C29" />
           </div>
         </div>
       </ContextMenu.Trigger>
