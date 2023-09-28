@@ -17,7 +17,7 @@ export default async function Search() {
   console.log(searchResult);
   return (
     <div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-1 flex-col gap-3">
         <h1 className="text-xl font-bold">
           As top <span className="text-orange">globais</span>
         </h1>

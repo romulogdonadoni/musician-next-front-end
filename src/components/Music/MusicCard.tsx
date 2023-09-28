@@ -1,6 +1,5 @@
 "use client";
 
-import { HiOutlinePlay } from "react-icons/hi";
 import { MusicContext } from "@/context/MusicContext";
 import Image from "next/image";
 import { useContext } from "react";
@@ -10,7 +9,8 @@ import { getCookie } from "cookies-next";
 import axios from "axios";
 import * as ContextMenu from "@radix-ui/react-context-menu";
 import { Share1Icon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { FiPlayCircle, FiStar } from "react-icons/fi";
+import { FiPlayCircle } from "react-icons/fi";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 interface MusicTrack {
   id: string;
@@ -74,7 +74,7 @@ export default function MusicCard({
               height={64}
               width={64}
               alt=""
-              className="rounded "
+              className="rounded"
             />
             <div className="absolute flex h-full w-full flex-1 items-center justify-center rounded bg-black bg-opacity-50 opacity-0 duration-300 ease-in-out group-hover/edit:opacity-100">
               <FiPlayCircle size={46} color={"#FF4C29"} />
@@ -98,7 +98,14 @@ export default function MusicCard({
             </div>
           </div>
           <div className=" flex flex-1 items-center justify-end ">
-            <FiStar size={26} color="#FF4C29" />
+            <div className="group/favorite flex h-7 w-7 items-center justify-center">
+              <div className="flex group-hover/favorite:hidden ">
+                <AiOutlineStar size={26} color="#FF4C29" />
+              </div>
+              <div className="hidden group-hover/favorite:flex">
+                <AiFillStar size={26} color="#FF4C29" />
+              </div>
+            </div>
           </div>
         </div>
       </ContextMenu.Trigger>

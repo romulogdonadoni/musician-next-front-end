@@ -82,7 +82,7 @@ export default function Player() {
             <Image className="rounded" src={musicContext?.music.imageUrl!} width={64} height={64} alt="" />
           )}
           <div>
-            <p className="text-xs animate-pulse">Playing now...</p>
+            <p className="text-xs animate-pulse">Tocando agora...</p>
             <p className="text-base">{musicContext?.music.name}</p>
             <p className="text-xs">{musicContext?.music.authorName}</p>
           </div>

@@ -49,7 +49,7 @@ export default async function App() {
     });
 
   return (
-    <div className="flex flex-col gap-6 pr-3">
+    <div className="flex flex-1 flex-col gap-6">
       {cookiesStorage.has("auth-token") ? (
         <div className="flex flex-col gap-3">
           <h1 className="text-xl font-bold">
@@ -80,7 +80,7 @@ export default async function App() {
       ) : (
         <></>
       )}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-1 flex-col gap-3">
         <h1 className="text-xl font-bold">
           As <span className="text-orange">músicas</span> mais ouvidas
         </h1>
@@ -108,7 +108,7 @@ export default async function App() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-1 flex-col gap-3">
         <h1 className="text-xl font-bold">
           Seus <span className="text-orange">álbuns</span> mais ouvidos
         </h1>
@@ -118,7 +118,7 @@ export default async function App() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-1 flex-col gap-3">
         <h1 className="text-xl font-bold">
           Seus <span className="text-orange">artistas</span> favoritos
         </h1>

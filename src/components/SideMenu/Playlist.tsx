@@ -19,7 +19,7 @@ export default function Playlist() {
   }
 
   return (
-    <div className="flex flex-col flex-grow gap-3 overflow-y-auto h-0  p-3">
+    <div className="flex flex-col flex-grow gap-3 overflow-y-auto h-0  p-3 overflow-hidden">
       {playlist?.map((res, index) => {
         return <PlayListContainer key={index} name={res.name} />;
       })}

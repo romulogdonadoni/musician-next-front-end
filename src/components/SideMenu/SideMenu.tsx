@@ -6,41 +6,74 @@ import Playlist from "./Playlist";
 import ModalPlaylist from "../Modal/ModalPlaylist";
 import { HiPlusSm } from "react-icons/hi";
 import { useState } from "react";
+import { CgMenuRound } from "react-icons/cg";
 
 export default function SideMenu() {
-  const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
   const handleOpenModal = () => {
-    setOpen(!open);
+    setModalOpen(!modalOpen);
   };
   return (
-    <aside className="flex w-105 flex-col gap-3">
+    <aside
+      className={`flex ${
+        menuOpen ? "w-[420px]" : "w-[100px]"
+      } flex-col gap-3 transition-all duration-300 ease-in-out`}
+    >
       <div className=" rounded-lg bg-black-800">
+        <div
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex cursor-pointer flex-row flex-nowrap items-center gap-2 rounded-lg p-3 duration-300 ease-in-out hover:text-orange"
+        >
+          <CgMenuRound size={26} />
+        </div>
         <Link
           href={"/"}
-          className="flex cursor-pointer flex-row items-center gap-2 rounded-lg p-3 duration-300 ease-in-out hover:text-orange"
+          className="flex cursor-pointer flex-row flex-nowrap items-center gap-2 rounded-lg p-3 duration-300 ease-in-out hover:text-orange"
         >
-          <FiHome size={26} />
-          <span className="font-bold">Home</span>
+          <div className="h-[26px] w-[26px]">
+            <FiHome size={26} />
+          </div>
+          <span className={`font-bold ${menuOpen ? "flex" : "hidden"}`}>
+            Início
+          </span>
         </Link>
-        <Link href={"/search"} className="flex cursor-pointer flex-row items-center gap-2 rounded-lg p-3 duration-300 ease-in-out hover:text-orange">
-          <FiSearch size={26} />
-          <span className="font-bold">Search</span>
+        <Link
+          href={"/search"}
+          className="flex cursor-pointer flex-row flex-nowrap items-center gap-2 rounded-lg p-3 duration-300 ease-in-out hover:text-orange"
+        >
+          <div className="h-[26px] w-[26px]">
+            <FiSearch size={26} />
+          </div>
+          <span className={`font-bold ${menuOpen ? "flex" : "hidden"}`}>
+            Procurar
+          </span>
         </Link>
       </div>
-      {open ? <ModalPlaylist handleOpenModal={handleOpenModal} /> : <></>}
+      {modalOpen ? <ModalPlaylist handleOpenModal={handleOpenModal} /> : <></>}
       <div className="flex flex-1 flex-col rounded-lg bg-black-800">
-        <div className=" flex items-center justify-between p-3">
-          <div className=" flex items-center gap-3">
-            <FiMusic size={26} />
-            <span className="font-bold">Your Library</span>
+        <div className=" flex items-center justify-between">
+          <div className="flex cursor-pointer flex-row flex-nowrap items-center gap-2 rounded-lg p-3 duration-300 ease-in-out hover:text-orange">
+            <div className="h-[26px] w-[26px]">
+              <FiMusic size={26} />
+            </div>
+            <span
+              className={`font-bold ${
+                menuOpen ? "flex" : "hidden"
+              } whitespace-nowrap`}
+            >
+              Sua Biblioteca
+            </span>
           </div>
           <div
             onClick={() => {
               handleOpenModal();
             }}
-            className="cursor-pointer rounded-full duration-300 ease-in-out hover:bg-black-600"
+            className="p-3"
           >
-            <HiPlusSm size={26} />
+            <div className="cursor-pointer rounded-full duration-300 ease-in-out hover:bg-black-600">
+              <HiPlusSm size={26} />
+            </div>
           </div>
         </div>
         <Playlist />
