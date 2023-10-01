@@ -13,6 +13,7 @@ export default function Playlist() {
   }
 
   async function getPlaylist() {
+    
     await instance.get(`/get/playlist`, { headers: { Authorization: `Bearer ${getCookie("auth-token")}` } }).then((res) => {
       setPlaylist(res.data);
     });

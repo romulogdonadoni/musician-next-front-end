@@ -11,6 +11,7 @@ import * as ContextMenu from "@radix-ui/react-context-menu";
 import { Share1Icon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { FiPlayCircle } from "react-icons/fi";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import SilverDisk from "../../../public/icons/opticaldiscicon.svg";
 
 interface MusicTrack {
   id: string;
@@ -80,21 +81,21 @@ export default function MusicCard({
               <FiPlayCircle size={46} color={"#FF4C29"} />
             </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <Link
-              href={`/music/${id}`}
-              className="flex-nowrap whitespace-nowrap text-base decoration-solid hover:underline"
-            >
-              {name}
-            </Link>
-            <div className="flex items-center">
-              <span className="flex-nowrap whitespace-nowrap text-xs text-gray-400">
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
+              <Link
+                href={`/music/${id}`}
+                className="flex-nowrap leading-5 whitespace-nowrap text-base decoration-solid hover:underline"
+              >
+                {name}
+              </Link>
+              <span className="flex-nowrap leading-3 whitespace-nowrap text-xs text-gray-400">
                 {authorName}
               </span>
-              <BsDot color={"#9BA2AE"} />{" "}
-              <span className="flex-nowrap whitespace-nowrap text-xs text-gray-400">
-                Views-{views}
-              </span>
+            </div>
+            <div className="flex gap-1 flex-nowrap whitespace-nowrap text-xs text-gray-400">
+              <Image src={SilverDisk} width={16} height={16} alt="" />
+              <span>Tocada {views} Vezes </span>
             </div>
           </div>
           <div className=" flex flex-1 items-center justify-end ">

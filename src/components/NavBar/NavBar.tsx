@@ -57,10 +57,10 @@ export default function NavBar() {
         </form>
       </div>
       <div className="flex items-center gap-3 ">
-        <div className="flex cursor-pointer gap-2 rounded-full bg-white px-3 py-2">
+        <Link href={"/workspace"} className="flex cursor-pointer gap-2 rounded-full bg-white px-3 py-2">
           <span className="font-bold text-orange">Criar Álbum</span>
           <TbMusicUp size={26} color={"#FF4C29"} />
-        </div>
+        </Link>
         <Link
           href={"/auth/login"}
           className="flex cursor-pointer gap-2 rounded-full px-3 py-2"

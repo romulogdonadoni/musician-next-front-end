@@ -1,15 +1,37 @@
 "use client";
 
 import Illustration from "@/../public/illu.svg";
-import { AuthContext } from "@/context/AuthContext";
 import { LoginFormData } from "@/types/types";
+import axios from "axios";
+import { setCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
+
+
+type SignInType = {
+  email: string;
+  password: string;
+};
 
 export default function Auth() {
   const [formData, setFormData] = useState<LoginFormData>({ email: "", password: "" });
-  const { handleSignIn } = useContext(AuthContext);
+  const router = useRouter();
+
+  async function handleSignIn({ email, password }: SignInType) {
+    const { token } = await axios
+      .post("https://musician-project-be.onrender.com/auth/login", {
+        email,
+        password,
+      })
+      .then((res) => {
+        return res.data;
+      });
+    setCookie("auth-token", token, { maxAge: 60 * 60 * 6 });
+    router.replace("/");
+  }
+
   return (
     <div className="flex  overflow-clip">
       <div className="flex flex-col bg-black-800 p-10 border border-silver-600 rounded-l-2xl">

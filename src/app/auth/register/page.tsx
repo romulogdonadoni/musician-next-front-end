@@ -1,12 +1,33 @@
 "use client";
 import Illustration from "@/../public/illu.svg";
 import { RegisterFormData } from "@/types/types";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
+
+type SignUpType = {
+  email: string;
+  username: string;
+  password: string;
+  role: string;
+};
 
 export default function Auth() {
   const [formData, setFormData] = useState<RegisterFormData>({ email: "", username: "", password: "", role: "ARTIST" });
+  const router = useRouter()
+
+  async function handleSignUp({ email, username, password, role }: SignUpType) {
+    await axios
+      .post("https://musician-project-be.onrender.com/auth/register", {
+        email,
+        username,
+        password,
+        role
+      })
+    router.replace("/auth/login");
+  }
 
   return (
     <div className="flex  overflow-clip">
@@ -51,17 +72,21 @@ export default function Auth() {
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             />
           </div>
-          <div className="flex flex-col gap-1">
-            <label>Confirme sua senha</label>
-            <input
-              className="bg-transparent outline-none border-2 border-orange rounded-2xl p-3"
-              placeholder="********"
-              type="password"
-              name=""
-              id=""
-            />
+          <div className="flex item-center justify-between">
+            <Link href={"/auth/login"} className="flex items-center text-orange">
+              Login
+            </Link>
+            <button
+              className="flex items-center justify-center rounded-2xl bg-orange py-2 px-4"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSignUp(formData);
+              }}
+            >
+              SignUp
+            </button>
           </div>
-          <Link href={"/auth/login"}>Login</Link>
         </form>
       </div>
     </div>
