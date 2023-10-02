@@ -16,7 +16,19 @@ export default async function Artist({ params }: AlbumProps) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-3">
-        <Image className="rounded-full object-cover w-64 h-64" src={artist.image} height={512} width={512} quality={100} alt="" />
+      {artist.image ? (
+          <Image className="rounded-full object-cover w-64 h-64" src={artist.image} height={512} width={512} quality={100} alt="" />
+        ) : (
+          <Image
+            src={`https://ui-avatars.com/api/?name=${artist.username}&background=random&color=fff&size=512&bold=true`}
+            height={512}
+            width={512}
+            alt=""
+            quality={100}
+            className="h-32 w-32 rounded-full object-cover"
+          />
+        )}
+        
         <div className="flex flex-col justify-center">
           <p>Artista</p>
           <p className="font-bold text-9xl">{artist.username}</p>

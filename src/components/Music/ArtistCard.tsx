@@ -21,9 +21,9 @@ export default function ArtistContaier({
           />
         ) : (
           <Image
-            src={`https://ui-avatars.com/api/?name=${username}&background=random&color=fff&size=512&bold=true`}
-            height={512}
-            width={512}
+            src={`https://ui-avatars.com/api/?name=${username}&background=random&color=fff&size=136&bold=true`}
+            height={136}
+            width={136}
             alt=""
             quality={100}
             className="h-32 w-32 rounded-full object-cover"
