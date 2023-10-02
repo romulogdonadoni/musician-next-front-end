@@ -1,20 +1,36 @@
-"use client";
-
-import Link from "next/link";
 import Image from "next/image";
-import { HiOutlinePlay } from "react-icons/hi";
 
 interface ArtistContainerProps {
   username: string;
-  image: string;
+  image: string | null;
 }
-export default function ArtistContaier({ username, image }: ArtistContainerProps) {
+export default function ArtistContaier({
+  username,
+  image,
+}: ArtistContainerProps) {
   return (
-    <div className="group/edit flex  flex-col bg-black-700  border border-silver-600  rounded-lg p-2 gap-2 cursor-pointer hover:bg-black-600 ease-in-out duration-300  ">
-      <div className="rounded-full object-cover w-32 h-32">
-        <Image src={image} height={136} width={136} alt="" className="rounded-full object-cover w-32 h-32" />
+    <div className="group/edit flex  cursor-pointer flex-col  gap-2 rounded-lg  border border-silver-600 bg-black-700 p-2 duration-300 ease-in-out hover:bg-black-600  ">
+      <div className="h-32 w-32 rounded-full object-cover">
+        {image ? (
+          <Image
+            src={image}
+            height={136}
+            width={136}
+            alt=""
+            className="h-32 w-32 rounded-full object-cover"
+          />
+        ) : (
+          <Image
+            src={`https://ui-avatars.com/api/?name=${username}&background=random&color=fff&size=512&bold=true`}
+            height={512}
+            width={512}
+            alt=""
+            quality={100}
+            className="h-32 w-32 rounded-full object-cover"
+          />
+        )}
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center">
         <p className="flex-nowrap whitespace-nowrap">{username}</p>
       </div>
     </div>

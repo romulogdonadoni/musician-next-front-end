@@ -33,7 +33,7 @@ export type FavoriteMusics = {
 
 export type Artist = {
   id: string;
-  image: string;
+  image: string | null;
   username: string;
 };
 export type LoginFormData = {
