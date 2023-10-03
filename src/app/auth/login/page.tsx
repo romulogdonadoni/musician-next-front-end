@@ -34,18 +34,18 @@ export default function Auth() {
 
   return (
     <div className="flex  overflow-clip">
-      <div className="flex flex-col bg-black-800 p-10 border border-silver-600 rounded-l-2xl">
+      <div className="flex flex-col bg-black-800 p-10 border border-silver-600 rounded-l-lg">
         <h1>Welcome To Musician.</h1>
         <h3>Create your account or log in with an existing one.</h3>
         <Image src={Illustration} alt="" />
       </div>
-      <div className="flex flex-col w-105 bg-black-700 p-10 gap-4 border border-silver-600 rounded-r-2xl">
+      <div className="flex flex-col w-105 bg-black-700 p-10 gap-4 border border-silver-600 rounded-r-lg">
         <h1 className="text-xl font-bold">Login</h1>
         <form className="flex flex-col gap-2">
           <div className="flex flex-col gap-1">
             <label>Email</label>
             <input
-              className="bg-transparent outline-none border-2 border-orange rounded-2xl p-3"
+              className="bg-transparent outline-none border-2 border-orange rounded-lg p-3"
               placeholder="example@email.com"
               type="text"
               name=""
@@ -58,7 +58,7 @@ export default function Auth() {
           <div className="flex flex-col gap-1">
             <label>Senha</label>
             <input
-              className="bg-transparent outline-none border-2 border-orange rounded-2xl p-3"
+              className="bg-transparent outline-none border-2 border-orange rounded-lg p-3"
               placeholder="********"
               type="password"
               name=""
@@ -73,7 +73,7 @@ export default function Auth() {
               Register
             </Link>
             <button
-              className="flex items-center justify-center rounded-2xl bg-orange py-2 px-4"
+              className="flex items-center justify-center rounded-lg bg-orange py-2 px-4"
               type="submit"
               onClick={(e) => {
                 e.preventDefault();

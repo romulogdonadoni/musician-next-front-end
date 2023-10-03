@@ -9,10 +9,12 @@ import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
+import Image from "next/image";
 
 type UserType = {
   id: string;
   username: string;
+  image: string;
   iat: number;
 };
 
@@ -24,7 +26,7 @@ export default function NavBar() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    hasCookie("auth-token") ? setUser(jwtDecode(token!)) : null;
+    hasCookie("auth-token") && setUser(jwtDecode(token!));
   }, [token]);
 
   const handlePushUrl = () => {
@@ -45,31 +47,37 @@ export default function NavBar() {
           }}
           className="flex"
         >
-          <div className="flex justify-center items-center h-10 w-10 rounded-l-full border-t border-b border-l border-silver-600 ">
+          <div className="flex h-10 w-10 items-center justify-center rounded-l-full border-b border-l border-t border-silver-600 ">
             <FiSearch size={26} />
           </div>
           <input
             type="text"
             placeholder="Busque, músicas, álbuns, artistas ou playlists"
-            className="h-10 w-[330px] rounded-r-full border-t border-b border-r border-silver-600 bg-transparent py-2 pr-4 outline-none"
+            className="h-10 w-[330px] rounded-r-full border-b border-r border-t border-silver-600 bg-transparent py-2 pr-4 outline-none"
             onChange={(e) => setName(e.currentTarget.value)}
           />
         </form>
       </div>
       <div className="flex items-center gap-3 ">
-        <Link href={"/workspace"} className="flex cursor-pointer gap-2 rounded-full bg-white px-3 py-2">
-          <span className="font-bold text-orange">Criar Álbum</span>
-          <TbMusicUp size={26} color={"#FF4C29"} />
-        </Link>
         <Link
-          href={"/auth/login"}
-          className="flex cursor-pointer gap-2 rounded-full px-3 py-2"
+          href={"/workspace"}
+          className="flex h-8 w-8 cursor-pointer items-center justify-center gap-2 rounded-full bg-white"
         >
-          <span className="font-bold text-orange">
-            {user?.username ? user.username : "Entrar"}
-          </span>
+          <TbMusicUp size={20} color={"#FF4C29"} />
+        </Link>
 
-          <CgProfile size={26} color={"#FF4C29"} />
+        <Link href={"/auth/login"}>
+          {user ? (
+            <Image
+              src={user?.image}
+              className="flex h-12 w-12 cursor-pointer rounded-full object-cover"
+              alt=""
+              height={40}
+              width={40}
+            />
+          ) : (
+            <span className="font-bold text-orange">Entrar</span>
+          )}
         </Link>
       </div>
     </nav>

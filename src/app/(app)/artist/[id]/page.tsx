@@ -25,7 +25,7 @@ export default async function Artist({ params }: AlbumProps) {
             width={512}
             alt=""
             quality={100}
-            className="h-32 w-32 rounded-full object-cover"
+            className="h-64 w-64 rounded-full object-cover"
           />
         )}
         
