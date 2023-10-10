@@ -1,19 +1,21 @@
-import AlbumMusicList from "@/components/Music/AlbumMusicList";
-import { Album } from "@/types/types";
-import axios from "axios";
-import Image from "next/image";
-import Link from "next/link";
-
+import AlbumMusicList from '@/components/Music/AlbumMusicList';
+import ButtonPlayAlbum from '@/components/Music/ButtonPlayAlbum';
+import { Album } from '@/types/types';
+import axios from 'axios';
+import Image from 'next/image';
+import Link from 'next/link';
 interface AlbumProps {
   params: {
     id: string;
   };
 }
 export default async function Album({ params }: AlbumProps) {
+  const album: Album = await axios
+    .get(`https://musician-project-be.onrender.com/get/album/${params.id}`)
+    .then((res) => {
+      return res.data;
+    });
 
-  const album: Album = await axios.get(`https://musician-project-be.onrender.com/get/album/${params.id}`).then((res) => {
-    return res.data;
-  });
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-3">
@@ -26,7 +28,7 @@ export default async function Album({ params }: AlbumProps) {
           </Link>
         </div>
       </div>
-
+      <ButtonPlayAlbum musicList={album.music.map((res) => res.musicUrl)} />
       <table>
         <tbody className="flex flex-col gap-3">
           {album.music.map((res, index) => {
@@ -40,6 +42,7 @@ export default async function Album({ params }: AlbumProps) {
                 imageUrl={res.imageUrl}
                 authorName={res.authorName}
                 views={res._count.musicViews}
+                musicList={album.music.map((res) => res.musicUrl)}
               />
             );
           })}

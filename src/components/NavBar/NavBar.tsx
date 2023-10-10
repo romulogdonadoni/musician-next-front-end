@@ -1,15 +1,14 @@
 "use client";
 
-import { TbMusicUp } from "react-icons/tb";
-import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
 import NavHistory from "./NavHistory";
-import { getCookie, hasCookie } from "cookies-next";
+import { getCookie, hasCookie, deleteCookie } from "cookies-next";
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
 import Image from "next/image";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 type UserType = {
   id: string;
@@ -23,7 +22,6 @@ export default function NavBar() {
   const token = getCookie("auth-token");
   const [name, setName] = useState<string>();
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     hasCookie("auth-token") && setUser(jwtDecode(token!));
@@ -59,26 +57,56 @@ export default function NavBar() {
         </form>
       </div>
       <div className="flex items-center gap-3 ">
-        <Link
-          href={"/workspace"}
-          className="flex h-8 w-8 cursor-pointer items-center justify-center gap-2 rounded-full bg-white"
-        >
-          <TbMusicUp size={20} color={"#FF4C29"} />
-        </Link>
+        {user ? (
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <Image
+                src={user?.image}
+                className="flex h-12 w-12 cursor-pointer rounded-full object-cover"
+                alt=""
+                height={40}
+                width={40}
+              />
+            </DropdownMenu.Trigger>
 
-        <Link href={"/auth/login"}>
-          {user ? (
-            <Image
-              src={user?.image}
-              className="flex h-12 w-12 cursor-pointer rounded-full object-cover"
-              alt=""
-              height={40}
-              width={40}
-            />
-          ) : (
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content
+                className="w-[200px] rounded-lg border border-silver-600 bg-neutral-950 p-2"
+                sideOffset={5}
+                align="end"
+              >
+                <DropdownMenu.Group>
+                  <DropdownMenu.Item className="text-white">
+                    Perfil
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item className="text-white">
+                    Configurações
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item className="text-white">
+                    <Link href={"/workspace"}>
+                      <span className="text-white">Meus Álbuns</span>
+                    </Link>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item className="cursor-pointer text-white">
+                    <span
+                      className="font-bold text-orange"
+                      onClick={() => {
+                        window.location.reload();
+                        deleteCookie("auth-token");
+                      }}
+                    >
+                      Sair
+                    </span>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Group>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
+        ) : (
+          <Link href={"/auth/login"}>
             <span className="font-bold text-orange">Entrar</span>
-          )}
-        </Link>
+          </Link>
+        )}
       </div>
     </nav>
   );

@@ -9,6 +9,9 @@
 .disabled {
   pointer-events: none;
 }
+input[type="range"] {
+  accent-color: #ff4c29;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }

@@ -113,7 +113,7 @@ export default async function App() {
           Seus <span className="text-orange">álbuns</span> mais ouvidos
         </h1>
         <div className="flex flex-wrap gap-3">
-          {albums?.slice(0, 8).map((res) => (
+          {albums?.map((res) => (
             <AlbumContainer key={res.id} id={res.id} name={res.name} imageUrl={res.imageUrl} authorName={res.authorName} />
           ))}
         </div>
@@ -123,7 +123,7 @@ export default async function App() {
           Seus <span className="text-orange">artistas</span> favoritos
         </h1>
         <div className="flex flex-wrap gap-3">
-          {artist?.slice(0, 8).map((res) => (
+          {artist?.map((res) => (
             <ArtistContaier key={res.id} username={res.username} image={res.image} />
           ))}
         </div>

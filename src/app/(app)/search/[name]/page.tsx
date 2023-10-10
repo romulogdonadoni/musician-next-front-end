@@ -18,7 +18,6 @@ export default async function Search({ params }: SearchProps) {
     .then((res) => {
       return res.data;
     });
-  console.log(searchResult);
   return (
     <div className="flex">
       <div className="flex flex-1 flex-col gap-3">

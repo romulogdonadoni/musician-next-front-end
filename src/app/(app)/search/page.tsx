@@ -14,7 +14,6 @@ export default async function Search() {
     .then((res) => {
       return res.data;
     });
-  console.log(searchResult);
   return (
     <div>
       <div className="flex flex-1 flex-col gap-3">
