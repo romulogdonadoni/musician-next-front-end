@@ -45,8 +45,14 @@ export const MusicContext = createContext<MusicContextProps | null>({
   isPlay: false,
   setCurrentTime: () => {},
 });
-const mySound = new Audio('');
 export default function MusicProvider({ children }: { children: React.ReactNode }) {
+  const [mySound, setMySound] = useState<HTMLAudioElement>()
+
+  useEffect(() => {
+    setMySound(new Audio())
+  },[])
+
+
   const [music, setMusic] = useState<Music>({
     name: '',
     authorName: '',
@@ -62,6 +68,10 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   const [isPlay, setIsPlay] = useState<boolean>(false);
 
+  if(!mySound){
+    return
+  }
+  
   const switchMusic = (src: string[], index: number) => {
     setMusicList(src);
     setCurrentTrackIndex(index);
@@ -119,8 +129,8 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
       value={{
         music,
         setMusic,
-        currentTime,
         setCurrentTime,
+        currentTime,
         switchMusic,
         currentTrackIndex,
         currentDuration,
