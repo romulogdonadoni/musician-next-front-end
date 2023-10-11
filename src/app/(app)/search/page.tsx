@@ -59,7 +59,7 @@ export default async function Search() {
         </h1>
         <div className="flex flex-wrap gap-3">
           {searchResult?.artist?.slice(0, 8).map((res) => (
-            <ArtistContaier key={res.id} username={res.username} image={res.image} />
+            <ArtistContaier key={res.id} id={res.id} username={res.username} image={res.image} />
           ))}
         </div>
       </div>
