@@ -10,6 +10,7 @@ type MusicContextProps = {
   handlePrevious: () => void;
   handlePlayPause: () => void;
   handleVolume: (arg0: number) => void;
+  handleChangeTrackTimeline: (arg0: number) => void;
   currentTime: number;
   currentDuration: number;
   currentTrackIndex: number;
@@ -39,6 +40,7 @@ export const MusicContext = createContext<MusicContextProps | null>({
   handlePrevious: () => {},
   handlePlayPause: () => {},
   handleVolume: () => {},
+  handleChangeTrackTimeline: () => {},
   currentTime: 0,
   currentDuration: 0,
   currentTrackIndex: 0,
@@ -46,12 +48,11 @@ export const MusicContext = createContext<MusicContextProps | null>({
   setCurrentTime: () => {},
 });
 export default function MusicProvider({ children }: { children: React.ReactNode }) {
-  const [mySound, setMySound] = useState<HTMLAudioElement>()
+  const [mySound, setMySound] = useState<HTMLAudioElement>();
 
   useEffect(() => {
-    setMySound(new Audio())
-  },[])
-
+    setMySound(new Audio());
+  }, []);
 
   const [music, setMusic] = useState<Music>({
     name: '',
@@ -68,15 +69,18 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   const [isPlay, setIsPlay] = useState<boolean>(false);
 
-  if(!mySound){
-    return
+  if (!mySound) {
+    return;
   }
-  
+
   const switchMusic = (src: string[], index: number) => {
     setMusicList(src);
     setCurrentTrackIndex(index);
     mySound.src = src[index ? index : 0];
     mySound.play();
+  };
+  const handleChangeTrackTimeline = (time: number) => {
+    mySound.currentTime = (time * mySound.duration) / 100;
   };
 
   mySound.onended = () => {
@@ -90,16 +94,16 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
   };
 
   const handleNext = () => {
-    if(currentTrackIndex >= musicList?.length! - 1){
-      return
+    if (currentTrackIndex >= musicList?.length! - 1) {
+      return;
     }
     setCurrentTrackIndex(currentTrackIndex + 1);
     switchMusic(musicList!, currentTrackIndex + 1);
   };
 
   const handlePrevious = () => {
-    if(currentTrackIndex <= 0){
-      return
+    if (currentTrackIndex <= 0) {
+      return;
     }
     setCurrentTrackIndex(currentTrackIndex - 1);
     switchMusic(musicList!, currentTrackIndex - 1);
@@ -116,8 +120,12 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
     mySound.volume = value;
   };
 
-  mySound.onplay = () => {setIsPlay(true)};
-  mySound.onpause = () => {setIsPlay(false)};
+  mySound.onplay = () => {
+    setIsPlay(true);
+  };
+  mySound.onpause = () => {
+    setIsPlay(false);
+  };
 
   mySound.ontimeupdate = () => {
     setCurrentTime(mySound.currentTime);
@@ -139,6 +147,7 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
         handlePrevious,
         handlePlayPause,
         handleVolume,
+        handleChangeTrackTimeline,
       }}>
       {children}
     </MusicContext.Provider>

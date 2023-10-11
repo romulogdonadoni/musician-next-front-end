@@ -2,7 +2,7 @@
 
 import { FiSearch, FiHome, FiMusic } from "react-icons/fi";
 import Link from "next/link";
-import Playlist from "./Playlist";
+import PlaylistNav from "./PlaylistNav";
 import ModalPlaylist from "../Modal/ModalPlaylist";
 import { HiPlusSm } from "react-icons/hi";
 import { createContext, useState } from "react";
@@ -88,7 +88,7 @@ export default function SideMenu() {
               </div>
             </div>
           </div>
-          <Playlist />
+          <PlaylistNav />
         </div>
       </aside>
     </SideMenuContext.Provider>

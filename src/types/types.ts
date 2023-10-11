@@ -46,6 +46,7 @@ export type RegisterFormData = {
   password: string;
   role: string;
 };
-export type PlayList = {
+export type Playlist = {
+  id: string;
   name: string;
 };

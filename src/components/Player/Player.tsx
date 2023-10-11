@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { MusicContext } from "@/context/MusicContext";
-import Image from "next/image";
-import { useContext, useRef, useEffect, useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { MusicContext } from '@/context/MusicContext';
+import Image from 'next/image';
+import { useContext, useRef, useEffect, useState } from 'react';
+import { AiOutlineHeart } from 'react-icons/ai';
 import {
   FiPlayCircle,
   FiPauseCircle,
@@ -15,15 +15,27 @@ import {
   FiVolumeX,
   FiVolume2,
   FiVolume1,
-} from "react-icons/fi";
-import { PiMicrophoneStage } from "react-icons/pi";
+} from 'react-icons/fi';
+import { PiMicrophoneStage } from 'react-icons/pi';
 
 export default function Player() {
+  const sliderTrackRef = useRef<HTMLInputElement>(null);
   const musicContext = useContext(MusicContext);
+  const [drag, setDrag] = useState<boolean>(false);
   if (!musicContext) {
     return;
   }
-  const { currentTime, currentDuration, music, handlePlayPause, handleNext, handlePrevious, handleVolume, isPlay } = musicContext;
+  const {
+    currentTime,
+    currentDuration,
+    music,
+    handlePlayPause,
+    handleNext,
+    handlePrevious,
+    handleVolume,
+    handleChangeTrackTimeline,
+    isPlay,
+  } = musicContext;
 
   const currentTimeLine = () => {
     const time = (musicContext.currentTime * 100) / musicContext.currentDuration;
@@ -36,12 +48,12 @@ export default function Player() {
     }
     const left = Math.floor(time / 60)
       .toString()
-      .padStart(2, "0");
+      .padStart(2, '0');
     const right = Math.floor(time % 60)
       .toString()
-      .padStart(2, "0");
+      .padStart(2, '0');
 
-    return left + ":" + right;
+    return left + ':' + right;
   };
 
   const volumeIcon = (volume: number) => {
@@ -55,12 +67,26 @@ export default function Player() {
       return <FiVolumeX size={26} />;
     }
   };
+  if (sliderTrackRef.current) {
+    sliderTrackRef.current.oninput = () => {
+      setDrag(true);
+    };
+
+    sliderTrackRef.current.onpointerup = () => {
+      setDrag(false);
+      handleChangeTrackTimeline(sliderTrackRef.current!.valueAsNumber);
+    };
+
+    if (!drag) {
+      sliderTrackRef.current.valueAsNumber = currentTimeLine();
+    }
+  }
 
   return (
     <div className="flex-grow-1 min-h-24 flex h-24 items-center justify-center gap-10">
       <div className="flex flex-1 items-center rounded-lg border border-silver-600 bg-black-800 p-3">
         <div className="flex flex-1 items-center gap-3 ">
-          {music.imageUrl == "" ? (
+          {music.imageUrl == '' ? (
             <div className="h-16 w-16 rounded-lg bg-black-700"></div>
           ) : (
             <Image className="rounded" src={music.imageUrl!} width={64} height={64} alt="" />
@@ -71,7 +97,7 @@ export default function Player() {
             <p className="text-xs">{music.authorName}</p>
           </div>
         </div>
-        <AiOutlineHeart size={26} color={"#FF4C29"} />
+        <AiOutlineHeart size={26} color={'#FF4C29'} />
       </div>
       <div className="flex h-full flex-1 flex-col justify-between">
         <div className="grid grid-cols-3 items-center justify-between">
@@ -97,9 +123,7 @@ export default function Player() {
             <input
               type="range"
               defaultValue={50}
-              onChange={(e) =>
-                handleVolume(e.currentTarget.valueAsNumber * 0.01)
-              } 
+              onChange={(e) => handleVolume(e.currentTarget.valueAsNumber * 0.01)}
               step={0.1}
             />
           </div>
@@ -107,14 +131,7 @@ export default function Player() {
         <div className="flex gap-4">
           {clockConvert(currentTime)}
 
-          <input
-            type="range"
-            max={100}
-            step={0.01}
-            value={currentTimeLine()}
-            defaultValue={0}
-            className="flex flex-1"
-          />
+          <input ref={sliderTrackRef} type="range" max={100} step={0.01} defaultValue={0} className="flex flex-1" />
 
           {clockConvert(currentDuration)}
         </div>
@@ -130,11 +147,10 @@ export default function Player() {
                     <span
                       /* onClick={() => goToTime(res.time)} */
                       className={`cursor-pointer text-lg transition-all duration-300 ${
-                        res.time < currentTime! ? "text-orange" : "text-gray-500"
+                        res.time < currentTime! ? 'text-orange' : 'text-gray-500'
                       } hover:text-white`}
-                      key={index}
-                    >
-                      {res.word}{" "}
+                      key={index}>
+                      {res.word}{' '}
                     </span>
                   );
                 })}
