@@ -1,9 +1,10 @@
 import AlbumContainer from "@/components/Music/AlbumCard";
 
-export default function Workspace() {
+
+export default async function Workspace() {
+  
   return (
     <div className="flex gap-4">
-      <AlbumContainer id="1" authorName="Unknown" name="Single" imageUrl="" key={1} />
     </div>
   );
 }

@@ -1,10 +1,9 @@
 "use client";
 
-import { FiSearch, FiHome, FiMusic } from "react-icons/fi";
+import { FiSearch, FiHome, FiMusic, FiPlusCircle } from "react-icons/fi";
 import Link from "next/link";
 import PlaylistNav from "./PlaylistNav";
 import ModalPlaylist from "../Modal/ModalPlaylist";
-import { HiPlusSm } from "react-icons/hi";
 import { createContext, useState } from "react";
 import { CgMenuRound } from "react-icons/cg";
 
@@ -84,7 +83,7 @@ export default function SideMenu() {
               className="p-3"
             >
               <div className="cursor-pointer rounded-full duration-300 ease-in-out hover:bg-black-600">
-                <HiPlusSm size={26} />
+                <FiPlusCircle size={26} />
               </div>
             </div>
           </div>

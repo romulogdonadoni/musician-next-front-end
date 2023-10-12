@@ -67,6 +67,7 @@ export default function Player() {
       return <FiVolumeX size={26} />;
     }
   };
+
   if (sliderTrackRef.current) {
     sliderTrackRef.current.oninput = () => {
       setDrag(true);
