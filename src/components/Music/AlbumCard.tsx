@@ -14,7 +14,7 @@ export default function AlbumContainer({ id, name, imageUrl, authorName }: Album
 
   return (
     <Link
-      href={`/workspace/album/${id}`}
+      href={`/album/${id}`}
       className="group/edit flex  flex-col bg-black-700  border border-silver-600  rounded-lg p-2 gap-2 cursor-pointer hover:bg-black-600 ease-in-out duration-300  "
     >
       <div className="rounded-full object-cover w-32 h-32">
