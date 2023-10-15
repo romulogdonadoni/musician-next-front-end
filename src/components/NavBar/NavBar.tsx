@@ -35,7 +35,7 @@ export default function NavBar() {
     router.push(`/search/${name}`);
   };
   return (
-    <nav className="flex items-center justify-between ">
+    <nav className="flex items-center justify-between sticky top-0 left-0 backdrop-blur-lg p-4 z-10 rounded-tl-lg">
       <NavHistory />
       <div className="flex justify-center">
         <form
@@ -44,13 +44,13 @@ export default function NavBar() {
             handlePushUrl();
           }}
           className="flex">
-          <div className="flex h-10 w-10 items-center justify-center rounded-l-full border-b border-l border-t border-silver-600 ">
+          <div className="flex h-10 w-10 items-center justify-center rounded-l-full border-b border-l border-t border-silver-600 bg-neutral-800">
             <FiSearch size={26} />
           </div>
           <input
             type="text"
             placeholder="Busque, músicas, álbuns, artistas ou playlists"
-            className="h-10 w-[330px] rounded-r-full border-b border-r border-t border-silver-600 bg-transparent py-2 pr-4 outline-none"
+            className="h-10 w-[330px] rounded-r-full border-b border-r border-t border-silver-600  py-2 pr-4 outline-none bg-neutral-800"
             onChange={(e) => setName(e.currentTarget.value)}
           />
         </form>
@@ -82,7 +82,7 @@ export default function NavBar() {
 
             <DropdownMenu.Portal>
               <DropdownMenu.Content
-                className="w-[200px] rounded-lg border border-silver-600 bg-neutral-950 p-2"
+                className="w-[200px] rounded-lg border border-silver-600 bg-neutral-950 p-2 z-20"
                 sideOffset={5}
                 align="end">
                 <DropdownMenu.Group>

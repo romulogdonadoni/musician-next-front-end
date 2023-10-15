@@ -1,6 +1,9 @@
 import Image from "next/image";
 
-export default function CommentCard() {
+interface CommentCardProps{
+  comment: string;
+}
+export default function CommentCard({comment}: CommentCardProps) {
   return (
     <div className="flex gap-2 rounded-lg border bg-neutral-900 border-silver-600 p-2">
       <Image
@@ -14,10 +17,7 @@ export default function CommentCard() {
       <div className="flex flex-col">
         <p className="text-sm font-bold">Veigh</p>
         <p className="text-xs">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          harum possimus maiores ipsam asperiores rerum cum obcaecati magni
-          labore nemo magnam tempora id velit iste perferendis, rem, delectus
-          nulla error.
+          {comment}
         </p>
         <p className="text-xs">Reply</p>
       </div>

@@ -1,11 +1,15 @@
 "use client";
 import { useContext, useEffect } from "react";
 import { MusicContext } from "@/context/MusicContext";
-export default function TrackLetter() {
+
+interface TrackLetterProps{
+  letter?: { verses: [[{ time: number; word: string }]] };
+}
+export default function TrackLetter({letter}:TrackLetterProps) {
   const musicContext = useContext(MusicContext);
   return (
     <div className="flex flex-col">
-      {musicContext?.music.letter?.verses.map((res, index) => {
+      {letter?.verses.map((res, index) => {
         return (
           <div className="flex flex-col gap-1" key={index}>
             {res.map((res, index) => {

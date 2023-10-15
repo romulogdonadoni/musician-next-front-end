@@ -32,7 +32,7 @@ export default function AlbumMusicList({
     return <div>Carregando...</div>;
   }
 
-  const { setMusic, currentTrackIndex, switchMusic } = musicContext;
+  const { setMusic, currentTrackIndex, switchMusic, isPlay } = musicContext;
 
   return (
     <tr
@@ -46,12 +46,12 @@ export default function AlbumMusicList({
         switchMusic(musicList, index);
       }}
       className={`group/track grid grid-cols-3 p-3 rounded-lg ${
-        currentTrackIndex == index ? 'bg-orange hover:bg-orange-100' : 'bg-black-700 hover:bg-black-600'
+        currentTrackIndex == index && isPlay ? 'bg-orange hover:bg-orange-100' : 'bg-black-700 hover:bg-black-600'
       }   border border-silver-600 cursor-pointer  ease-in-out duration-300`}>
       <td className="flex justify-start items-center">
         <div
           className={`hidden group-hover/track:flex w-8 h-8 justify-center items-center ${
-            currentTrackIndex == index ? 'text-white' : 'text-orange'
+            currentTrackIndex == index && isPlay ? 'text-white' : 'text-orange'
           }`}>
           <BsFillPlayFill size={26} />
         </div>
@@ -64,7 +64,7 @@ export default function AlbumMusicList({
       </td>
       <td className="flex items-center">Tocada {views} vezes</td>
       <td
-        className={`flex justify-end gap-2 items-center ${currentTrackIndex == index ? 'text-white' : 'text-orange'}`}>
+        className={`flex justify-end gap-2 items-center ${currentTrackIndex == index && isPlay ? 'text-white' : 'text-orange'}`}>
         <TiStarOutline size={26} />
         <span>03:11</span>
         <BiDotsHorizontalRounded size={26} />

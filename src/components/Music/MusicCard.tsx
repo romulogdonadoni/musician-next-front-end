@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { getCookie } from 'cookies-next';
 import axios from 'axios';
 import * as ContextMenu from '@radix-ui/react-context-menu';
-import { Share1Icon, ChevronRightIcon } from '@radix-ui/react-icons';
+import { PlusIcon ,Share1Icon, ChevronRightIcon } from '@radix-ui/react-icons';
 import { FiPlayCircle } from 'react-icons/fi';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import SilverDisk from '../../../public/icons/opticaldiscicon.svg';
@@ -58,7 +58,7 @@ export default function MusicCard({ id, name, imageUrl, authorName, musicUrl, vi
               handleCreateView(id);
             }}
             className="relative flex">
-            <Image src={imageUrl} height={64} width={64} alt="" className="rounded" />
+            <Image src={imageUrl} height={64} width={64} alt="" className="min-w-[64px] min-h-[64px] object-cover rounded" />
             <div className="absolute flex h-full w-full flex-1 items-center justify-center rounded bg-black bg-opacity-50 opacity-0 duration-300 ease-in-out group-hover/edit:opacity-100">
               <FiPlayCircle size={46} color={'#FF4C29'} />
             </div>
@@ -67,7 +67,7 @@ export default function MusicCard({ id, name, imageUrl, authorName, musicUrl, vi
             <div className="flex flex-col">
               <Link
                 href={`/music/${id}`}
-                className="flex-nowrap whitespace-nowrap text-base leading-5 decoration-solid hover:underline">
+                className="flex flex-1 overflow-hidden text-ellipsis whitespace-nowrap leading-5 decoration-solid hover:underline">
                 {name}
               </Link>
               <span className="flex-nowrap whitespace-nowrap text-xs leading-3 text-gray-400">{authorName}</span>
@@ -90,28 +90,32 @@ export default function MusicCard({ id, name, imageUrl, authorName, musicUrl, vi
         </div>
       </ContextMenu.Trigger>
       <ContextMenu.Portal>
-        <ContextMenu.Content className="min-w-[220px] overflow-hidden rounded-md bg-neutral-950 p-1">
+        <ContextMenu.Content className="min-w-[220px] overflow-hidden rounded-lg border-silver-600 border bg-neutral-950 p-2">
           <ContextMenu.Sub>
-            <ContextMenu.SubTrigger className="group relative flex select-none items-center rounded-[3px] p-[10px] text-[13px] leading-none text-orange outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[highlighted]:data-[state=open]:bg-orange data-[state=open]:bg-[#ff6a4d] data-[disabled]:text-white data-[highlighted]:data-[state=open]:text-white data-[highlighted]:text-white data-[state=open]:text-white">
+            <ContextMenu.SubTrigger className="group relative flex cursor-pointer select-none items-center rounded-lg p-2 text-[13px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[highlighted]:data-[state=open]:bg-orange data-[state=open]:bg-[#ff6a4d] data-[disabled]:text-white data-[highlighted]:data-[state=open]:text-white data-[highlighted]:text-white data-[state=open]:text-white">
               Compartilhar
               <div className="text-mauve11 ml-auto pl-5 group-data-[disabled]:text-white group-data-[highlighted]:text-white">
                 <ChevronRightIcon />
               </div>
             </ContextMenu.SubTrigger>
+            <ContextMenu.Item className="text-text-orange group relative flex cursor-pointer select-none items-center rounded-lg p-2 text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[disabled]:text-white data-[highlighted]:text-white">
+                  Adcionar a playlist
+                  <PlusIcon className="ml-auto" />
+                </ContextMenu.Item>
             <ContextMenu.Portal>
               <ContextMenu.SubContent
-                className="min-w-[220px] overflow-hidden rounded-md bg-neutral-950 p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]"
-                sideOffset={4}
-                alignOffset={-5}>
-                <ContextMenu.Item className="text-text-orange group relative flex  select-none items-center rounded-[3px] p-[10px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[disabled]:text-white data-[highlighted]:text-white">
+                className="min-w-[220px] overflow-hidden border-silver-600 border rounded-md bg-neutral-950 p-2"
+                sideOffset={8}
+                alignOffset={-8}>
+                <ContextMenu.Item className="text-text-orange group relative flex cursor-pointer select-none items-center rounded-lg p-2 text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[disabled]:text-white data-[highlighted]:text-white">
                   Copiar link da música
                   <Share1Icon className="ml-auto" />
                 </ContextMenu.Item>
-                <ContextMenu.Item className="text-text-orange relative flex  select-none items-center rounded-[3px] p-[10px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[disabled]:text-white data-[highlighted]:text-white">
+                <ContextMenu.Item className="text-text-orange relative flex cursor-pointer select-none items-center rounded-lg p-2 text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[disabled]:text-white data-[highlighted]:text-white">
                   Copiar link do álbum
                   <Share1Icon className="ml-auto" />
                 </ContextMenu.Item>
-                <ContextMenu.Item className="text-text-orange relative flex  select-none items-center rounded-[3px] p-[10px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[disabled]:text-white data-[highlighted]:text-white">
+                <ContextMenu.Item className="text-text-orange relative flex cursor-pointer select-none items-center rounded-lg p-2 text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-orange data-[disabled]:text-white data-[highlighted]:text-white">
                   Copiar link do artista
                   <Share1Icon className="ml-auto" />
                 </ContextMenu.Item>

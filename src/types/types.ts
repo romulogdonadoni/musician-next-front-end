@@ -12,13 +12,20 @@ export type Music = {
   id: string;
   name: string;
   authorName: string;
+  description:string;
   imageUrl: string;
   musicUrl: string;
   _count: { musicViews: number };
   authorId: string;
   letter?: { verses: [[{ time: number; word: string }]] };
+  comment: Comment[]
 };
-
+export type Comment = {
+  id: string;
+  comment: string;
+  musicId: string;
+  userId: string;
+}
 export type FavoriteMusics = {
   count: number;
   music: {

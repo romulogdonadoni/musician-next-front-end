@@ -2,6 +2,7 @@ import AlbumContainer from '@/components/Music/AlbumCard';
 import { instance } from '@/config/axiosConfig';
 import { Album } from '@/types/types';
 import { cookies } from 'next/headers';
+import Link from 'next/link';
 import { FiPlusCircle } from 'react-icons/fi';
 
 export default async function Workspace() {
@@ -21,13 +22,13 @@ export default async function Workspace() {
   console.log(album);
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-2 items-center">
+      <Link href={'/workspace/create'} className="flex gap-2 items-center">
         <div className="flex justify-center items-center bg-orange rounded-full p-1 w-9 h-9 cursor-pointer">
           <FiPlusCircle size={34} />
         </div>
         <p className="font-bold text-sm">Criar álbum</p>
-      </div>
-      <div className='flex gap-4'>
+      </Link>
+      <div className="flex gap-4">
         {album?.map((res) => (
           <AlbumContainer
             key={res.id}
