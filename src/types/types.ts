@@ -12,7 +12,7 @@ export type Music = {
   id: string;
   name: string;
   authorName: string;
-  description:string;
+  description: string;
   imageUrl: string;
   musicUrl: string;
   _count: { musicViews: number };
@@ -22,6 +22,7 @@ export type Music = {
 };
 export type Comment = {
   id: string;
+  user: { image: string; username: string; }
   comment: string;
   musicId: string;
   userId: string;

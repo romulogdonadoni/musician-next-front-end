@@ -42,9 +42,9 @@ export default async function Music({ params }: MusicProps) {
           <TrackLetter letter={music?.letter} />
         </div>
         <div className="flex flex-col gap-2">
-          <CommentCard key={music?.id} comment={music?.description} />
+          <CommentCard key={music?.id} name={music?.authorName} image={music?.imageUrl} comment={music?.description} />
           <CommentInput musicId={params.id}/>
-          {music?.comment.map((res) => <CommentCard key={res.id} comment={res.comment} />)}
+          {music?.comment?.reverse().map((res) => <CommentCard key={res.id} name={res.user.username} image={res.user.image} comment={res.comment} />)}
         </div>
       </div>
     </div>
