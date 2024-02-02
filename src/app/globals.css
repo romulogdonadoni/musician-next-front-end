@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+.disabled {
+  pointer-events: none;
+}
+input[type="range"] {
+  accent-color: #ff4c29;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0, 0.25);
+}
+::-webkit-scrollbar-thumb {
+  background: #ff4c29;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff684a;
+}
+
+::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04aa6d; /* Green background */
+  cursor: pointer;
+  border-radius: 9999px;
+}
+
+::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04aa6d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
